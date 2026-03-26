@@ -129,6 +129,10 @@ export const resumeConfig: ResumeConfig = {
       techs: ['ISO 27001', 'SIEM', 'EDR', 'Active Directory', 'API Security'],
       isHighlighted: true,
       details: {
+        context: {
+          fr: 'Environnement institutionnel avec fortes exigences de sécurité.',
+          en: 'Institutional environment with strong security requirements.',
+        },
         tasks: {
           fr: [
             'Participation à la gouvernance SSI (GRC)',
@@ -145,31 +149,11 @@ export const resumeConfig: ResumeConfig = {
             'Incident response',
           ],
         },
+        env: {
+          fr: 'SIEM / EDR / Active Directory / API Security / Firewall',
+          en: 'SIEM / EDR / Active Directory / API Security / Firewall',
+        },
       },
-    },
-    {
-      id: 'forvia',
-      company: { fr: 'Forvia', en: 'Forvia' },
-      role: { fr: 'Stagiaire Data', en: 'Data Intern' },
-      type: { fr: 'Stage', en: 'Internship' },
-      period: { fr: 'Avril 2024 - Juin 2024', en: 'April 2024 - June 2024' },
-      description: {
-        fr: 'Analyse de données et automatisation via Power Platform.',
-        en: 'Data analysis and automation using Power Platform.',
-      },
-      techs: ['Power Platform', 'Data Analysis', 'Automation'],
-    },
-    {
-      id: 'pointb',
-      company: { fr: 'Point B', en: 'Point B' },
-      role: { fr: 'Employé polyvalent', en: 'Versatile Employee' },
-      type: { fr: 'Job étudiant', en: 'Student job' },
-      period: { fr: '2022 - Présent', en: '2022 - Present' },
-      description: {
-        fr: 'Travail en équipe avec responsabilités de leadership.',
-        en: 'Teamwork with leadership responsibilities.',
-      },
-      techs: ['Teamwork', 'Leadership'],
     },
   ],
 
