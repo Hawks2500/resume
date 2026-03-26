@@ -180,6 +180,7 @@ export const resumeConfig: ResumeConfig = {
         fr: 'Travail en équipe avec prise de responsabilités et leadership.',
         en: 'Teamwork with leadership responsibilities.',
       },
+      techs: ['Teamwork', 'Management', 'Customer Service'],
     },
   ],
 
@@ -198,43 +199,8 @@ export const resumeConfig: ResumeConfig = {
     },
   ],
 
-  projects: [
-    {
-      id: 'cyberv',
-      title: { fr: 'CyberV - Pôle IT', en: 'CyberV - IT Division' },
-      description: {
-        fr: 'Gestion du pôle IT, développement web et management d\'équipe.',
-        en: 'IT division management, web development and team leadership.',
-      },
-      techs: ['Web', 'Management'],
-      url: 'http://test.sc1mece2393.universe.wf/',
-    },
-    {
-      id: 'github',
-      title: { fr: 'Projets GitHub', en: 'GitHub Projects' },
-      description: {
-        fr: 'Projets techniques en développement et cybersécurité.',
-        en: 'Technical projects in development and cybersecurity.',
-      },
-      techs: ['Java', 'Python', 'Angular'],
-      github: 'https://github.com/Hawks2500',
-    },
-  ],
-
-  hobbies: [
-    {
-      title: { fr: 'Cybersécurité', en: 'Cybersecurity' },
-      details: [
-        { fr: 'Speaker et événements', en: 'Speaker and events' },
-      ],
-    },
-    {
-      title: { fr: 'Développement', en: 'Development' },
-    },
-    {
-      title: { fr: 'Gestion de projet', en: 'Project management' },
-    },
-  ],
+  projects: [],
+  hobbies: [],
 
   theme: { preset: 'slate' },
 
