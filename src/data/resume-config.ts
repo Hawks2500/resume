@@ -11,20 +11,23 @@ export const resumeConfig: ResumeConfig = {
       en: 'Security Engineer (GRC & Technical)',
     },
     subtitle: {
-      fr: 'Profil polyvalent : cybersécurité, développement, data & IA',
-      en: 'Versatile profile: cybersecurity, development, data & AI',
+      fr: 'Profil polyvalent : cybersécurité, développement, data & IA — Recherche de stage à l\'étranger (Suisse/Allemagne) du 29 juin 2026 au 7 septembre 2026',
+      en: 'Versatile profile: cybersecurity, development, data & AI — Looking for an international internship (Switzerland/Germany) from June 29, 2026 to September 7, 2026',
     },
     location: 'Strasbourg / Montbéliard, France',
   },
+
   seo: {
     title: 'Yanis Zerrar — Ingénieur Sécurité',
-    description: 'CV interactif de Yanis Zerrar, ingénieur sécurité spécialisé en GRC, cybersécurité et développement sécurisé.',
+    description: 'CV interactif de Yanis Zerrar, ingénieur sécurité spécialisé en GRC, cybersécurité, conformité ISO 27001 et développement sécurisé.',
   },
+
   languages: {
     default: 'fr',
     available: ['fr', 'en'],
     labels: { fr: 'FR', en: 'EN' },
   },
+
   contact: [
     { type: 'linkedin', label: 'yanis-zerrar', href: 'https://www.linkedin.com/in/yanis-zerrar/' },
     { type: 'github', label: 'Hawks2500', href: 'https://github.com/Hawks2500' },
@@ -45,18 +48,23 @@ export const resumeConfig: ResumeConfig = {
       ],
     },
     {
-      title: { fr: 'Cybersécurité', en: 'Cybersecurity' },
+      title: { fr: 'Cybersécurité & GRC', en: 'Cybersecurity & GRC' },
       type: 'badges',
       items: [
+        { name: 'ISO 27001' },
+        { name: 'Risk Management' },
+        { name: 'IAM' },
         { name: 'Active Directory' },
         { name: 'SIEM' },
         { name: 'EDR' },
         { name: 'Firewall' },
-        { name: 'GRC' },
+        { name: 'Zero Trust' },
+        { name: 'Security Monitoring' },
+        { name: 'Incident Response' },
       ],
     },
     {
-      title: { fr: 'Développement', en: 'Development' },
+      title: { fr: 'Développement sécurisé', en: 'Secure Development' },
       type: 'badges',
       items: [
         { name: 'Java' },
@@ -66,6 +74,7 @@ export const resumeConfig: ResumeConfig = {
         { name: 'Angular' },
         { name: 'React' },
         { name: 'Node.js' },
+        { name: 'REST API' },
       ],
     },
     {
@@ -81,9 +90,9 @@ export const resumeConfig: ResumeConfig = {
       title: { fr: 'Réseaux', en: 'Networking' },
       type: 'badges',
       items: [
-        { name: 'RIP' },
-        { name: 'OSPF' },
+        { name: 'TCP/IP' },
         { name: 'BGP' },
+        { name: 'OSPF' },
         { name: 'MPLS' },
         { name: 'Cisco' },
       ],
@@ -92,14 +101,14 @@ export const resumeConfig: ResumeConfig = {
       title: { fr: 'Méthodologies', en: 'Methodologies' },
       type: 'text',
       items: [
-        { name: { fr: 'GRC, Gestion des risques, Sécurité applicative', en: 'GRC, Risk management, Application security' } },
+        { name: { fr: 'GRC, Gestion des risques, Sécurité applicative, Conformité ISO 27001', en: 'GRC, Risk management, Application security, ISO 27001 compliance' } },
       ],
     },
     {
       title: { fr: 'Qualités', en: 'Soft skills' },
       type: 'text',
       items: [
-        { name: { fr: 'Leadership, Adaptabilité, Autonomie, Esprit analytique', en: 'Leadership, Adaptability, Autonomy, Analytical mindset' } },
+        { name: { fr: 'Leadership, Adaptabilité, Autonomie, Esprit analytique, Gestion de projet', en: 'Leadership, Adaptability, Autonomy, Analytical mindset, Project management' } },
       ],
     },
   ],
@@ -112,63 +121,39 @@ export const resumeConfig: ResumeConfig = {
       type: { fr: 'Apprentissage', en: 'Apprenticeship' },
       period: { fr: '2024 - Présent', en: '2024 - Present' },
       description: {
-        fr: 'Participation à la gouvernance de la sécurité et mise en œuvre de solutions techniques.',
-        en: 'Contribution to security governance and implementation of technical solutions.',
+        fr: 'Contribution à la gouvernance SSI et à la sécurisation technique du SI.',
+        en: 'Contribution to security governance and technical security of information systems.',
       },
-      techs: ['SIEM', 'EDR', 'Active Directory', 'API', 'Firewall'],
+      techs: ['ISO 27001', 'SIEM', 'EDR', 'Active Directory', 'API Security'],
       isHighlighted: true,
       details: {
         context: {
-          fr: 'Environnement institutionnel avec fortes exigences de sécurité.',
-          en: 'Institutional environment with strong security requirements.',
+          fr: 'Environnement institutionnel avec fortes exigences de conformité et sécurité.',
+          en: 'Institutional environment with strong compliance and security requirements.',
         },
         tasks: {
           fr: [
             'Participation à la gouvernance SSI (GRC)',
             'Sécurisation d\'environnements Active Directory',
-            'Développement d\'API sécurisées',
-            'Déploiement de solutions EDR, SIEM et firewall',
-            'Supervision et gestion d\'incidents de sécurité',
-            'Sensibilisation des utilisateurs',
+            'Développement d\'API sécurisées (authentification, contrôle d\'accès)',
+            'Déploiement et administration de solutions SIEM, EDR et firewall',
+            'Supervision sécurité et gestion des incidents',
+            'Sensibilisation et accompagnement des utilisateurs',
           ],
           en: [
             'Participation in security governance (GRC)',
             'Securing Active Directory environments',
-            'Development of secure APIs',
-            'Deployment of EDR, SIEM and firewall solutions',
+            'Development of secure APIs (authentication, access control)',
+            'Deployment and administration of SIEM, EDR and firewall solutions',
             'Security monitoring and incident response',
-            'User awareness activities',
+            'User awareness and support',
           ],
         },
         env: {
-          fr: 'SIEM / EDR / Active Directory / API / Firewall',
-          en: 'SIEM / EDR / Active Directory / API / Firewall',
+          fr: 'SIEM / EDR / Active Directory / API Security / Firewall',
+          en: 'SIEM / EDR / Active Directory / API Security / Firewall',
         },
       },
-    },
-    {
-      id: 'forvia',
-      company: { fr: 'Forvia', en: 'Forvia' },
-      role: { fr: 'Stagiaire Data', en: 'Data Intern' },
-      type: { fr: 'Stage', en: 'Internship' },
-      period: { fr: '2024', en: '2024' },
-      description: {
-        fr: 'Analyse de données et automatisation via Power Platform.',
-        en: 'Data analysis and automation using Power Platform.',
-      },
-      techs: ['Power Platform'],
-    },
-    {
-      id: 'utbm-projects',
-      company: { fr: 'UTBM', en: 'UTBM' },
-      role: { fr: 'Projets académiques', en: 'Academic Projects' },
-      type: { fr: 'Projet', en: 'Project' },
-      period: { fr: '2024 - Présent', en: '2024 - Present' },
-      description: {
-        fr: 'Projets en data analyse, machine learning et développement.',
-        en: 'Projects in data analysis, machine learning and development.',
-      },
-      techs: ['Angular', 'Node.js', 'Machine Learning'],
     },
     {
       id: 'pointb',
@@ -177,10 +162,10 @@ export const resumeConfig: ResumeConfig = {
       type: { fr: 'Job étudiant', en: 'Student job' },
       period: { fr: '2022 - Présent', en: '2022 - Present' },
       description: {
-        fr: 'Travail en équipe avec prise de responsabilités et leadership.',
+        fr: 'Travail en équipe avec responsabilités de leadership.',
         en: 'Teamwork with leadership responsibilities.',
       },
-      techs: ['Teamwork', 'Management', 'Customer Service'],
+      techs: ['Teamwork', 'Leadership'],
     },
   ],
 
@@ -190,12 +175,6 @@ export const resumeConfig: ResumeConfig = {
       degree: { fr: 'Diplôme d\'ingénieur Informatique', en: 'Engineering Degree in Computer Science' },
       specialty: { fr: 'Cybersécurité, Data & IA', en: 'Cybersecurity, Data & AI' },
       period: '2024 - 2027',
-    },
-    {
-      school: { fr: 'IUT Nord Franche-Comté', en: 'IUT Nord Franche-Comté' },
-      degree: { fr: 'BUT Réseaux & Télécommunications', en: 'Bachelor in Networks & Telecommunications' },
-      specialty: { fr: 'Cybersécurité', en: 'Cybersecurity' },
-      period: '2022 - 2024',
     },
   ],
 
