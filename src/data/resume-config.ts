@@ -19,7 +19,7 @@ export const resumeConfig: ResumeConfig = {
 
   seo: {
     title: 'Yanis Zerrar — Ingénieur Sécurité',
-    description: 'CV interactif de Yanis Zerrar, ingénieur sécurité spécialisé en GRC, cybersécurité, conformité ISO 27001 et développement sécurisé.',
+    description: 'CV interactif de Yanis Zerrar, ingénieur sécurité spécialisé en GRC, cybersécurité, réseaux et développement sécurisé.',
   },
 
   languages: {
@@ -59,12 +59,11 @@ export const resumeConfig: ResumeConfig = {
         { name: 'EDR' },
         { name: 'Firewall' },
         { name: 'Zero Trust' },
-        { name: 'Security Monitoring' },
         { name: 'Incident Response' },
       ],
     },
     {
-      title: { fr: 'Développement sécurisé', en: 'Secure Development' },
+      title: { fr: 'Développement', en: 'Development' },
       type: 'badges',
       items: [
         { name: 'Java' },
@@ -78,6 +77,20 @@ export const resumeConfig: ResumeConfig = {
       ],
     },
     {
+      title: { fr: 'Réseaux & Systèmes', en: 'Networking & Systems' },
+      type: 'badges',
+      items: [
+        { name: 'TCP/IP' },
+        { name: 'BGP' },
+        { name: 'OSPF' },
+        { name: 'MPLS' },
+        { name: 'LAN/WAN' },
+        { name: 'Linux' },
+        { name: 'Windows Server' },
+        { name: 'Cisco' },
+      ],
+    },
+    {
       title: { fr: 'Data & IA', en: 'Data & AI' },
       type: 'badges',
       items: [
@@ -87,21 +100,10 @@ export const resumeConfig: ResumeConfig = {
       ],
     },
     {
-      title: { fr: 'Réseaux', en: 'Networking' },
-      type: 'badges',
-      items: [
-        { name: 'TCP/IP' },
-        { name: 'BGP' },
-        { name: 'OSPF' },
-        { name: 'MPLS' },
-        { name: 'Cisco' },
-      ],
-    },
-    {
       title: { fr: 'Méthodologies', en: 'Methodologies' },
       type: 'text',
       items: [
-        { name: { fr: 'GRC, Gestion des risques, Sécurité applicative, Conformité ISO 27001', en: 'GRC, Risk management, Application security, ISO 27001 compliance' } },
+        { name: { fr: 'GRC, Gestion des risques, Sécurité applicative, ISO 27001', en: 'GRC, Risk management, Application security, ISO 27001' } },
       ],
     },
     {
@@ -122,38 +124,40 @@ export const resumeConfig: ResumeConfig = {
       period: { fr: '2024 - Présent', en: '2024 - Present' },
       description: {
         fr: 'Contribution à la gouvernance SSI et à la sécurisation technique du SI.',
-        en: 'Contribution to security governance and technical security of information systems.',
+        en: 'Contribution to security governance and technical security.',
       },
       techs: ['ISO 27001', 'SIEM', 'EDR', 'Active Directory', 'API Security'],
       isHighlighted: true,
       details: {
-        context: {
-          fr: 'Environnement institutionnel avec fortes exigences de conformité et sécurité.',
-          en: 'Institutional environment with strong compliance and security requirements.',
-        },
         tasks: {
           fr: [
             'Participation à la gouvernance SSI (GRC)',
-            'Sécurisation d\'environnements Active Directory',
-            'Développement d\'API sécurisées (authentification, contrôle d\'accès)',
-            'Déploiement et administration de solutions SIEM, EDR et firewall',
-            'Supervision sécurité et gestion des incidents',
-            'Sensibilisation et accompagnement des utilisateurs',
+            'Sécurisation Active Directory',
+            'Développement d\'API sécurisées',
+            'Déploiement SIEM / EDR / firewall',
+            'Gestion d\'incidents',
           ],
           en: [
-            'Participation in security governance (GRC)',
-            'Securing Active Directory environments',
-            'Development of secure APIs (authentication, access control)',
-            'Deployment and administration of SIEM, EDR and firewall solutions',
-            'Security monitoring and incident response',
-            'User awareness and support',
+            'Security governance (GRC)',
+            'Active Directory security',
+            'Secure API development',
+            'SIEM / EDR / firewall deployment',
+            'Incident response',
           ],
         },
-        env: {
-          fr: 'SIEM / EDR / Active Directory / API Security / Firewall',
-          en: 'SIEM / EDR / Active Directory / API Security / Firewall',
-        },
       },
+    },
+    {
+      id: 'forvia',
+      company: { fr: 'Forvia', en: 'Forvia' },
+      role: { fr: 'Stagiaire Data', en: 'Data Intern' },
+      type: { fr: 'Stage', en: 'Internship' },
+      period: { fr: 'Avril 2024 - Juin 2024', en: 'April 2024 - June 2024' },
+      description: {
+        fr: 'Analyse de données et automatisation via Power Platform.',
+        en: 'Data analysis and automation using Power Platform.',
+      },
+      techs: ['Power Platform', 'Data Analysis', 'Automation'],
     },
     {
       id: 'pointb',
@@ -172,9 +176,18 @@ export const resumeConfig: ResumeConfig = {
   education: [
     {
       school: { fr: 'UTBM', en: 'UTBM' },
-      degree: { fr: 'Diplôme d\'ingénieur Informatique', en: 'Engineering Degree in Computer Science' },
+      degree: { fr: 'Diplôme d\'ingénieur Informatique', en: 'Engineering Degree' },
       specialty: { fr: 'Cybersécurité, Data & IA', en: 'Cybersecurity, Data & AI' },
       period: '2024 - 2027',
+    },
+    {
+      school: { fr: 'IUT Nord Franche-Comté', en: 'IUT Nord Franche-Comté' },
+      degree: { fr: 'BUT Réseaux & Télécommunications', en: 'Bachelor in Networks & Telecommunications' },
+      specialty: {
+        fr: 'Cybersécurité, Réseaux, Administration Systèmes',
+        en: 'Cybersecurity, Networking, Systems Administration',
+      },
+      period: '2022 - 2024',
     },
   ],
 
