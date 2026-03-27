@@ -167,7 +167,7 @@ export const resumeConfig: ResumeConfig = {
         fr: 'Analyse de données et automatisation via Power Platform.',
         en: 'Data analysis and automation using Power Platform.',
       },
-      techs: ['Power Platform'],
+      techs: ['Power Platform', 'SharePoint', 'Excel VBA', 'Data Analysis', 'Automation'],
     },
     {
       id: 'pointb',
@@ -179,6 +179,7 @@ export const resumeConfig: ResumeConfig = {
         fr: 'Travail en équipe avec prise de responsabilités et leadership.',
         en: 'Teamwork with leadership responsibilities.',
       },
+      techs: ['Teamwork', 'Leadership', 'Customer Service'],
     },
   ],
 
