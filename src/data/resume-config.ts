@@ -246,6 +246,18 @@ export const resumeConfig: ResumeConfig = {
         en: 'IT division management, web development and team leadership.',
       },
       techs: ['Web', 'Management'],
+      details: {
+        fr: [
+          'Gestion du pôle IT de l\'association CyberV, avec 10 membres',
+          'Développement et maintenance du site web de l\'association',
+          'Organisation d\'événements et de formations en cybersécurité',
+        ],
+        en: [
+          'Management of the IT division of the CyberV association, with 10 members',
+          'Development and maintenance of the association\'s website',
+          'Organization of cybersecurity events and training sessions',
+        ],
+      },
       url: 'http://cyberv.fr/',
     },
     {

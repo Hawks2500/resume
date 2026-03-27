@@ -61,6 +61,7 @@ export interface Project {
   title: LocalizedString
   description: LocalizedString
   techs: (TechName | (string & {}))[]
+  details?: LocalizedStringArray
   url?: string
   github?: string
 }
@@ -73,6 +74,7 @@ export interface Education {
   specialty?: LocalizedString
   period?: string
   logo?: string
+  details?: LocalizedStringArray
 }
 
 // ===== HOBBIES =====

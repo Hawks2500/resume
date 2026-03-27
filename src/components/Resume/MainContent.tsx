@@ -9,9 +9,19 @@ export function MainContent() {
   const { resolve, resolveArray } = useTranslation()
   const { personal, experiences, projects, education, labels } = resumeConfig
   const [expandedExp, setExpandedExp] = useState<string | null>(null)
+  const [expandedProject, setExpandedProject] = useState<string | null>(null)
+  const [expandedEdu, setExpandedEdu] = useState<number | null>(null)
 
   const toggleExp = (id: string) => {
     setExpandedExp(expandedExp === id ? null : id)
+  }
+
+  const toggleEdu = (index: number) => {
+    setExpandedEdu(expandedEdu === index ? null : index)
+  }
+
+  const toggleProject = (id: string) => {
+    setExpandedProject(expandedProject === id ? null : id)
   }
 
   const experienceLabels = {
@@ -92,6 +102,9 @@ export function MainContent() {
                 title={resolve(project.title)}
                 description={resolve(project.description)}
                 techs={project.techs}
+                details={project.details ? resolveArray(project.details) : undefined}
+                expanded={expandedProject === project.id}
+                onToggle={() => toggleProject(project.id)}
                 url={project.url}
                 github={project.github}
               />
@@ -114,6 +127,9 @@ export function MainContent() {
               specialty={edu.specialty ? resolve(edu.specialty) : undefined}
               period={edu.period}
               logo={edu.logo}
+              details={edu.details ? resolveArray(edu.details) : undefined}
+              expanded={expandedEdu === i}
+              onToggle={() => toggleEdu(i)}
             />
           ))}
         </div>
