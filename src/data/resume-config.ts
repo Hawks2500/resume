@@ -118,7 +118,7 @@ export const resumeConfig: ResumeConfig = {
   experiences: [
     {
       id: 'eurometropole',
-      company: { fr: 'Eurométropole de Strasbourg', en: 'Eurometropolis of Strasbourg' },
+      company: { fr: 'Eurométropole de Strasbourg', en: 'City and Eurometropolis of Strasbourg' },
       role: { fr: 'Ingénieur Sécurité', en: 'Security Engineer' },
       type: { fr: 'Apprentissage', en: 'Apprenticeship' },
       period: { fr: '2024 - Présent', en: '2024 - Present' },
@@ -136,23 +136,48 @@ export const resumeConfig: ResumeConfig = {
         tasks: {
           fr: [
             'Participation à la gouvernance SSI (GRC)',
-            'Sécurisation Active Directory',
+            'Sécurisation d\'environnements Active Directory',
             'Développement d\'API sécurisées',
-            'Déploiement SIEM / EDR / firewall',
-            'Gestion d\'incidents',
+            'Déploiement de solutions EDR, SIEM et firewall',
+            'Supervision et gestion d\'incidents de sécurité',
+            'Sensibilisation des utilisateurs',
           ],
           en: [
-            'Security governance (GRC)',
-            'Active Directory security',
-            'Secure API development',
-            'SIEM / EDR / firewall deployment',
-            'Incident response',
+            'Participation in security governance (GRC)',
+            'Securing Active Directory environments',
+            'Development of secure APIs',
+            'Deployment of EDR, SIEM and firewall solutions',
+            'Security monitoring and incident response',
+            'User awareness activities',
           ],
         },
         env: {
-          fr: 'SIEM / EDR / Active Directory / API Security / Firewall',
-          en: 'SIEM / EDR / Active Directory / API Security / Firewall',
+          fr: 'SIEM / EDR / Active Directory / API / Firewall',
+          en: 'SIEM / EDR / Active Directory / API / Firewall',
         },
+      },
+    },
+    {
+      id: 'forvia',
+      company: { fr: 'Forvia', en: 'Forvia' },
+      role: { fr: 'Stagiaire Data', en: 'Data Intern' },
+      type: { fr: 'Stage', en: 'Internship' },
+      period: { fr: '2024', en: '2024' },
+      description: {
+        fr: 'Analyse de données et automatisation via Power Platform.',
+        en: 'Data analysis and automation using Power Platform.',
+      },
+      techs: ['Power Platform'],
+    },
+    {
+      id: 'pointb',
+      company: { fr: 'Point B', en: 'Point B' },
+      role: { fr: 'Employé polyvalent', en: 'Versatile Employee' },
+      type: { fr: 'Job étudiant', en: 'Student job' },
+      period: { fr: '2022 - Présent', en: '2022 - Present' },
+      description: {
+        fr: 'Travail en équipe avec prise de responsabilités et leadership.',
+        en: 'Teamwork with leadership responsibilities.',
       },
     },
   ],
@@ -163,6 +188,24 @@ export const resumeConfig: ResumeConfig = {
       degree: { fr: 'Diplôme d\'ingénieur Informatique', en: 'Engineering Degree' },
       specialty: { fr: 'Cybersécurité, Data & IA', en: 'Cybersecurity, Data & AI' },
       period: '2024 - 2027',
+      details: {
+      fr: [
+        'Data analyse et machine learning',
+        'Cybersécurité et sécurisation des systèmes d\'information',
+        'Développement logiciel et architectures applicatives',
+        'Administration systèmes et réseaux',
+        'Gestion de projet et méthodes Agile',
+        'Bases de données SQL et NoSQL (PostgreSQL, MongoDB, Elasticsearch)',
+      ],
+      en: [
+        'Data analysis and machine learning',
+        'Cybersecurity and information systems security',
+        'Software development and application architectures',
+        'Systems and network administration',
+        'Project management and Agile methodologies',
+        'SQL and NoSQL databases (PostgreSQL, MongoDB, Elasticsearch)',
+      ],
+    },
     },
     {
       school: { fr: 'IUT Nord Franche-Comté', en: 'IUT Nord Franche-Comté' },
@@ -172,11 +215,63 @@ export const resumeConfig: ResumeConfig = {
         en: 'Cybersecurity, Networking, Systems Administration',
       },
       period: '2022 - 2024',
+      details: {
+      fr: [
+        'Administration systèmes et réseaux',
+        'Protocoles de routage (RIP, OSPF, BGP, MPLS)',
+        'Conception et déploiement réseaux LAN/WAN',
+        'Configuration de firewalls (Stormshield, pfSense)',
+        'Développement d\'applications réseau (UDP Android/Desktop)',
+        'Préparation à la certification Cisco CCNA',
+      ],
+      en: [
+        'Systems and network administration',
+        'Routing protocols (RIP, OSPF, BGP, MPLS)',
+        'LAN/WAN network design and deployment',
+        'Firewall configuration (Stormshield, pfSense)',
+        'Network application development (UDP Android/Desktop)',
+        'Preparation for Cisco CCNA certification',
+      ],
+    },
     },
   ],
 
-  projects: [],
-  hobbies: [],
+  projects: [
+    {
+      id: 'cyberv',
+      title: { fr: 'CyberV - Pôle IT', en: 'CyberV - IT Division' },
+      description: {
+        fr: 'Gestion du pôle IT, développement web et management d\'équipe.',
+        en: 'IT division management, web development and team leadership.',
+      },
+      techs: ['Web', 'Management'],
+      url: 'http://cyberv.fr/',
+    },
+    {
+      id: 'github',
+      title: { fr: 'Projets GitHub', en: 'GitHub Projects' },
+      description: {
+        fr: 'Projets techniques en développement et cybersécurité.',
+        en: 'Technical projects in development and cybersecurity.',
+      },
+      techs: ['Java', 'Python', 'Angular', 'C++', 'Web Development'],
+      github: 'https://github.com/Hawks2500',
+    },
+  ],
+  hobbies: [
+    {
+      title: { fr: 'Cybersécurité', en: 'Cybersecurity' },
+      details: [
+        { fr: 'Speaker et événements', en: 'Speaker and events' },
+      ],
+    },
+    {
+      title: { fr: 'Développement', en: 'Development' },
+    },
+    {
+      title: { fr: 'Voitures et motos', en: 'Cars and bikes' },
+    },
+  ],
 
   theme: { preset: 'slate' },
 
