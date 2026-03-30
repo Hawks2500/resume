@@ -7,8 +7,8 @@ export const resumeConfig: ResumeConfig = {
     name: 'Yanis Zerrar',
     photoBackEmoji: '🛡️',
     title: {
-      fr: 'Ingénieur Sécurité (GRC & Technique)',
-      en: 'Security Engineer (GRC & Technical)',
+      fr: 'Ingénieur Sécurité (GRC & Opérationnel)',
+      en: 'Security Engineer (GRC & Operational)',
     },
     subtitle: {
       fr: 'Profil polyvalent : cybersécurité, développement, data & IA — Recherche de stage à l\'étranger (Suisse/Allemagne) du 29 juin 2026 au 7 septembre 2026',
