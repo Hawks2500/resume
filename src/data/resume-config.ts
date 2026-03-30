@@ -248,7 +248,7 @@ export const resumeConfig: ResumeConfig = {
       techs: ['Web', 'Management'],
       details: {
         fr: [
-          'Gestion du pôle IT de l\'association CyberV, avec 10 membres',
+          'Gestion du pôle IT de l\'association CyberV, avec 3 membres',
           'Développement et maintenance du site web de l\'association',
           'Organisation d\'événements et de formations en cybersécurité',
         ],
