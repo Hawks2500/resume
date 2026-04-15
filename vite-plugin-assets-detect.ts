@@ -7,7 +7,8 @@ import path from 'path'
  * Vite plugin that auto-detects assets in public/ at build time.
  *
  * For non-developers: just drop your files in the right folders:
- * - Photo/image: public/images/ (any .jpg, .jpeg, .png, or .webp)
+ * - Photo/image: public/images/ with a filename containing photo|profil|profile|avatar|headshot
+ *   (example: profile-photo.png)
  * - CV PDF (French): public/cv/fr/ (any .pdf)
  * - CV PDF (English): public/cv/en/ (any .pdf)
  *
@@ -21,6 +22,7 @@ export interface DetectedAssets {
 }
 
 const IMAGE_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.webp']
+const PHOTO_FILENAME_HINTS = ['photo', 'profil', 'profile', 'avatar', 'headshot']
 
 function findFirstFile(dir: string, extensions: string[]): string | null {
   if (!fs.existsSync(dir)) return null
@@ -32,6 +34,25 @@ function findFirstFile(dir: string, extensions: string[]): string | null {
     }
   }
   return null
+}
+
+function findPhotoFile(dir: string): string | null {
+  if (!fs.existsSync(dir)) return null
+
+  const files = fs.readdirSync(dir)
+  const imageFiles = files.filter((file) => {
+    const ext = path.extname(file).toLowerCase()
+    return IMAGE_EXTENSIONS.includes(ext)
+  })
+
+  // Avoid picking company/school logos as profile photos.
+  // We only auto-detect files whose name looks like a profile photo.
+  const hinted = imageFiles.find((file) => {
+    const basename = path.basename(file, path.extname(file)).toLowerCase()
+    return PHOTO_FILENAME_HINTS.some((hint) => basename.includes(hint))
+  })
+
+  return hinted ?? null
 }
 
 export function assetsDetectPlugin(): Plugin {
@@ -47,7 +68,7 @@ export function assetsDetectPlugin(): Plugin {
 
       // --- Detect photo/image in public/images/ ---
       const imagesDir = path.join(publicDir, 'images')
-      const photoFile = findFirstFile(imagesDir, IMAGE_EXTENSIONS)
+      const photoFile = findPhotoFile(imagesDir)
       if (photoFile) {
         detectedAssets.photo = `/images/${photoFile}`
       }

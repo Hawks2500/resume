@@ -4,6 +4,7 @@ import { ChevronDownIcon } from '@/components/icons'
 import { Modal } from '@/components/ui/Modal'
 import { useBreakpoints } from '@/lib/hooks/useBreakpoints'
 import { assetUrl } from '@/lib/utils'
+import { TechBadge } from './TechBadge'
 
 interface EducationItemProps {
   school: string
@@ -11,6 +12,7 @@ interface EducationItemProps {
   specialty?: string
   period?: string
   logo?: string
+  techs?: string[]
   details?: string[]
   expanded: boolean
   onToggle: () => void
@@ -22,6 +24,7 @@ export function EducationItem({
   specialty,
   period,
   logo,
+  techs,
   details,
   expanded,
   onToggle,
@@ -49,8 +52,8 @@ export function EducationItem({
       >
         <div className="flex items-start gap-4 py-2 rounded-lg px-3 -mx-3 transition-colors duration-200 hover:bg-resume-primary/5">
           {logo && (
-            <div className="w-14 h-14 rounded-lg overflow-hidden flex-shrink-0">
-              <img src={assetUrl(logo)} alt={`${school} logo`} className="object-contain w-full h-full" loading="lazy" />
+            <div className="h-12 flex items-center flex-shrink-0">
+              <img src={assetUrl(logo)} alt={`${school} logo`} className="h-full w-auto max-w-[5rem] object-contain" loading="lazy" />
             </div>
           )}
 
@@ -65,6 +68,13 @@ export function EducationItem({
             <p className="text-sm text-resume-text-secondary">{degree}</p>
             {specialty && <p className="text-sm text-resume-primary">{specialty}</p>}
             {period && <p className="text-xs text-resume-text-secondary mt-0.5">{period}</p>}
+            {techs && techs.length > 0 && (
+              <div className="flex flex-wrap gap-1.5 mt-2">
+                {techs.map((tech) => (
+                  <TechBadge key={tech} tech={tech} />
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </button>

@@ -36,6 +36,7 @@ import type { TechName } from './tech-registry'
 export interface Experience {
   id: string
   company: LocalizedString
+  logo?: string
   role: LocalizedString
   type?: LocalizedString
   period: LocalizedString
@@ -59,6 +60,7 @@ export interface Experience {
 export interface Project {
   id: string
   title: LocalizedString
+  logo?: string
   description: LocalizedString
   techs: (TechName | (string & {}))[]
   details?: LocalizedStringArray
@@ -74,6 +76,7 @@ export interface Education {
   specialty?: LocalizedString
   period?: string
   logo?: string
+  techs?: (TechName | (string & {}))[]
   details?: LocalizedStringArray
 }
 

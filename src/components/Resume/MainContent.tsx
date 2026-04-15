@@ -8,6 +8,7 @@ import { EducationItem } from './EducationItem'
 export function MainContent() {
   const { resolve, resolveArray } = useTranslation()
   const { personal, experiences, projects, education, labels } = resumeConfig
+  const subtitle = personal.subtitle ? resolve(personal.subtitle) : undefined
   const [expandedExp, setExpandedExp] = useState<string | null>(null)
   const [expandedProject, setExpandedProject] = useState<string | null>(null)
   const [expandedEdu, setExpandedEdu] = useState<number | null>(null)
@@ -42,8 +43,15 @@ export function MainContent() {
         <p className="text-base text-resume-text-secondary tracking-widest mt-2">
           {resolve(personal.title).toUpperCase()}
         </p>
-        {personal.subtitle && (
-          <p className="text-sm text-resume-primary mt-1">{resolve(personal.subtitle)}</p>
+        {subtitle && (
+          <p className="text-sm text-resume-primary mt-1">
+            {subtitle.split('\n').map((line, i) => (
+              <span key={i}>
+                {line}
+                {i < subtitle.split('\n').length - 1 && <br />}
+              </span>
+            ))}
+          </p>
         )}
       </div>
 
@@ -58,6 +66,7 @@ export function MainContent() {
               key={exp.id}
               year={resolve(exp.period)}
               company={resolve(exp.company)}
+              logo={exp.logo}
               type={exp.type ? resolve(exp.type) : undefined}
               role={resolve(exp.role)}
               description={resolve(exp.description)}
@@ -100,9 +109,10 @@ export function MainContent() {
               <ProjectItem
                 key={project.id}
                 title={resolve(project.title)}
+                logo={project.logo}
                 description={resolve(project.description)}
                 techs={project.techs}
-                details={project.details ? resolveArray(project.details) : undefined}
+                projectDetails={project.details ? resolveArray(project.details) : undefined}
                 expanded={expandedProject === project.id}
                 onToggle={() => toggleProject(project.id)}
                 url={project.url}
@@ -127,6 +137,7 @@ export function MainContent() {
               specialty={edu.specialty ? resolve(edu.specialty) : undefined}
               period={edu.period}
               logo={edu.logo}
+              techs={edu.techs}
               details={edu.details ? resolveArray(edu.details) : undefined}
               expanded={expandedEdu === i}
               onToggle={() => toggleEdu(i)}

@@ -11,10 +11,10 @@ export const resumeConfig: ResumeConfig = {
       en: 'Security Engineer (GRC & Operational)',
     },
     subtitle: {
-      fr: 'Profil polyvalent : cybersécurité, développement, data & IA — Recherche de stage à l\'étranger (Suisse/Allemagne) du 29 juin 2026 au 7 septembre 2026',
-      en: 'Versatile profile: cybersecurity, development, data & AI — Looking for an international internship (Switzerland/Germany) from June 29, 2026 to September 7, 2026',
+      fr: 'Profil polyvalent : cybersécurité, développement, data & IA \nRecherche de stage à l\'étranger (Suisse/Allemagne) du 29 juin 2026 au 7 septembre 2026',
+      en: 'Versatile profile: cybersecurity, development, data & AI \nLooking for an international internship (Switzerland/Germany) from June 29, 2026 to September 7, 2026',
     },
-    location: 'Strasbourg / Montbéliard, France',
+    location: 'France',
   },
 
   seo: {
@@ -29,11 +29,11 @@ export const resumeConfig: ResumeConfig = {
   },
 
   contact: [
-    { type: 'linkedin', label: 'yanis-zerrar', href: 'https://www.linkedin.com/in/yanis-zerrar/' },
+    { type: 'linkedin', label: 'Yanis ZERRAR', href: 'https://www.linkedin.com/in/yanis-zerrar/' },
     { type: 'github', label: 'Hawks2500', href: 'https://github.com/Hawks2500' },
-    { type: 'email', label: 'yanis.zerrar@gmail.com' },
+    { type: 'email', label: 'yanis.zerrar@gmail.com', href: 'mailto:yanis.zerrar@gmail.com' },
     { type: 'phone', label: '+33 7 66 55 67 05' },
-    { type: 'location', label: 'Strasbourg / Montbéliard, France' },
+    { type: 'location', label: 'France' },
   ],
 
   skills: [
@@ -51,12 +51,7 @@ export const resumeConfig: ResumeConfig = {
       title: { fr: 'Cybersécurité & GRC', en: 'Cybersecurity & GRC' },
       type: 'badges',
       items: [
-        { name: 'ISO 27001' },
-        { name: 'Risk Management' },
         { name: 'IAM' },
-        { name: 'Active Directory' },
-        { name: 'SIEM' },
-        { name: 'EDR' },
         { name: 'Firewall' },
         { name: 'Zero Trust' },
         { name: 'Incident Response' },
@@ -66,14 +61,12 @@ export const resumeConfig: ResumeConfig = {
       title: { fr: 'Développement', en: 'Development' },
       type: 'badges',
       items: [
-        { name: 'Java' },
-        { name: 'Python' },
-        { name: 'C++' },
         { name: 'PHP' },
-        { name: 'Angular' },
+        { name: 'Rust' },
         { name: 'React' },
         { name: 'Node.js' },
-        { name: 'REST API' },
+        { name: 'REST' },
+        { name: 'TypeScript' },
       ],
     },
     {
@@ -94,16 +87,19 @@ export const resumeConfig: ResumeConfig = {
       title: { fr: 'Data & IA', en: 'Data & AI' },
       type: 'badges',
       items: [
-        { name: 'Machine Learning' },
+        { name: 'Power BI' },
         { name: 'Data Analysis' },
         { name: 'Power Platform' },
+        { name: 'Elasticsearch' },
+        { name: 'MySQL' },
+        { name: 'PostgreSQL' },
       ],
     },
     {
       title: { fr: 'Méthodologies', en: 'Methodologies' },
       type: 'text',
       items: [
-        { name: { fr: 'GRC, Gestion des risques, Sécurité applicative, ISO 27001', en: 'GRC, Risk management, Application security, ISO 27001' } },
+        { name: { fr: 'Sécurité applicative, Agile, SCRUM', en: 'Application security, Agile, SCRUM' } },
       ],
     },
     {
@@ -119,6 +115,7 @@ export const resumeConfig: ResumeConfig = {
     {
       id: 'eurometropole',
       company: { fr: 'Eurométropole de Strasbourg', en: 'City and Eurometropolis of Strasbourg' },
+      logo: 'images/eurometropole.JPG',
       role: { fr: 'Ingénieur Sécurité', en: 'Security Engineer' },
       type: { fr: 'Apprentissage', en: 'Apprenticeship' },
       period: { fr: '2024 - Présent', en: '2024 - Present' },
@@ -126,7 +123,7 @@ export const resumeConfig: ResumeConfig = {
         fr: 'Contribution à la gouvernance SSI et à la sécurisation technique du SI.',
         en: 'Contribution to security governance and technical security.',
       },
-      techs: ['ISO 27001', 'SIEM', 'EDR', 'Active Directory', 'API Security'],
+      techs: ['ISO 27001', 'SIEM', 'EDR', 'Active Directory', 'API Security', 'PowerShell', 'Automation'],
       isHighlighted: true,
       details: {
         context: {
@@ -160,35 +157,54 @@ export const resumeConfig: ResumeConfig = {
     {
       id: 'forvia',
       company: { fr: 'Forvia', en: 'Forvia' },
+      logo: 'images/forvia.svg',
       role: { fr: 'Stagiaire Data', en: 'Data Intern' },
       type: { fr: 'Stage', en: 'Internship' },
-      period: { fr: '2024', en: '2024' },
+      period: { fr: 'Avril 2024 - Juin 2024', en: 'April 2024 - June 2024' },
       description: {
         fr: 'Analyse de données et automatisation via Power Platform.',
         en: 'Data analysis and automation using Power Platform.',
       },
       techs: ['Power Platform', 'SharePoint', 'Excel VBA', 'Data Analysis', 'Automation'],
-    },
-    {
-      id: 'pointb',
-      company: { fr: 'Point B', en: 'Point B' },
-      role: { fr: 'Employé polyvalent', en: 'Versatile Employee' },
-      type: { fr: 'Job étudiant', en: 'Student job' },
-      period: { fr: '2022 - Présent', en: '2022 - Present' },
-      description: {
-        fr: 'Travail en équipe avec prise de responsabilités et leadership.',
-        en: 'Teamwork with leadership responsibilities.',
+      details: {
+        context: {
+          fr: 'Environnement industriel automobile avec besoin d\'optimisation de processus métier.',
+          en: 'Automotive industrial environment with need for business process optimization.',
+        },
+        tasks: {
+          fr: [
+            'Analyse de données et création de tableaux de bord',
+            'Développement de solutions Power Apps pour l\'automatisation',
+            'Création de workflows Power Automate',
+            'Configuration et optimisation SharePoint',
+            'Automatisation VBA dans Excel',
+            'Documentation et formation utilisateurs',
+          ],
+          en: [
+            'Data analysis and dashboard creation',
+            'Development of Power Apps solutions for automation',
+            'Creation of Power Automate workflows',
+            'SharePoint configuration and optimization',
+            'VBA automation in Excel',
+            'Documentation and user training',
+          ],
+        },
+        env: {
+          fr: 'Power Platform / SharePoint / Excel VBA / SQL',
+          en: 'Power Platform / SharePoint / Excel VBA / SQL',
+        },
       },
-      techs: ['Teamwork', 'Leadership', 'Customer Service'],
     },
   ],
 
   education: [
     {
       school: { fr: 'UTBM', en: 'UTBM' },
+      logo: 'images/utbm.svg',
       degree: { fr: 'Diplôme d\'ingénieur Informatique', en: 'Engineering Degree' },
       specialty: { fr: 'Cybersécurité, Data & IA', en: 'Cybersecurity, Data & AI' },
       period: '2024 - 2027',
+      techs: ['Cybersecurity', 'Data Analysis', 'Machine Learning', 'Project Management'],
       details: {
       fr: [
         'Data analyse et machine learning',
@@ -210,12 +226,14 @@ export const resumeConfig: ResumeConfig = {
     },
     {
       school: { fr: 'IUT Nord Franche-Comté', en: 'IUT Nord Franche-Comté' },
+      logo: 'images/iut-nord-franche-comte.png',
       degree: { fr: 'BUT Réseaux & Télécommunications', en: 'Bachelor in Networks & Telecommunications' },
       specialty: {
         fr: 'Cybersécurité, Réseaux, Administration Systèmes',
         en: 'Cybersecurity, Networking, Systems Administration',
       },
       period: '2022 - 2024',
+      techs: ['Network Administration', 'OSPF', 'BGP', 'MPLS', 'Firewall', 'UDP/TCP', 'CCNA'],
       details: {
       fr: [
         'Administration systèmes et réseaux',
@@ -223,7 +241,7 @@ export const resumeConfig: ResumeConfig = {
         'Conception et déploiement réseaux LAN/WAN',
         'Configuration de firewalls (Stormshield, pfSense)',
         'Développement d\'applications réseau (UDP Android/Desktop)',
-        'Préparation à la certification Cisco CCNA',
+        'Certification Cisco CCNA',
       ],
       en: [
         'Systems and network administration',
@@ -231,7 +249,7 @@ export const resumeConfig: ResumeConfig = {
         'LAN/WAN network design and deployment',
         'Firewall configuration (Stormshield, pfSense)',
         'Network application development (UDP Android/Desktop)',
-        'Preparation for Cisco CCNA certification',
+        'Cisco CCNA certification',
       ],
     },
     },
@@ -240,22 +258,23 @@ export const resumeConfig: ResumeConfig = {
   projects: [
     {
       id: 'cyberv',
-      title: { fr: 'CyberV - Pôle IT', en: 'CyberV - IT Division' },
+      title: { fr: 'CyberV - Responsable IT', en: 'CyberV - IT Manager' },
+      logo: 'images/cyberv.png',
       description: {
-        fr: 'Gestion du pôle IT, développement web et management d\'équipe.',
-        en: 'IT division management, web development and team leadership.',
+        fr: 'Pilotage du pôle IT, développement web et coordination d\'équipe.',
+        en: 'Leading the IT team, web development, and team coordination.',
       },
-      techs: ['Web', 'Management'],
+      techs: ['Laravel', 'Discord Bot', 'Team Management', 'Google Cloud', 'GitHub Actions'],
       details: {
         fr: [
-          'Gestion du pôle IT de l\'association CyberV, avec 3 membres',
+          'Coordination des ressources IT : administration cloud et gestion des licences',
           'Développement et maintenance du site web de l\'association',
-          'Organisation d\'événements et de formations en cybersécurité',
+          'Organisation d\'événements et de sessions de sensibilisation en cybersécurité',
         ],
         en: [
-          'Management of the IT division of the CyberV association, with 10 members',
-          'Development and maintenance of the association\'s website',
-          'Organization of cybersecurity events and training sessions',
+          'Coordinated IT resources: cloud administration and license management',
+          'Developed and maintained the association website',
+          'Organized cybersecurity events and awareness sessions',
         ],
       },
       url: 'http://cyberv.fr/',
@@ -275,14 +294,16 @@ export const resumeConfig: ResumeConfig = {
     {
       title: { fr: 'Cybersécurité', en: 'Cybersecurity' },
       details: [
-        { fr: 'Speaker et événements', en: 'Speaker and events' },
-      ],
+        { fr: 'Speaker et événements en cybersécurité', en: 'Speaker and cybersecurity events' },      ],
     },
     {
-      title: { fr: 'Développement', en: 'Development' },
+      title: { fr: 'Boxe', en: 'Boxing' },
     },
     {
-      title: { fr: 'Voitures et motos', en: 'Cars and bikes' },
+      title: { fr: 'Automobiles & Motos', en: 'Cars & Motorcycles' },
+    },
+    {
+      title: { fr: 'Natation', en: 'Swimming' },
     },
   ],
 

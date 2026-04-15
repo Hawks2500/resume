@@ -178,6 +178,44 @@ const TECH_REGISTRY = {
   'Socket.io': { color: '#010101' },
   'WebSocket': { color: '#010101' },
 
+  // ===== Cybersecurity & GRC =====
+  'EBIOS RM': { color: '#1F4B7B' },
+  'IAM': { color: '#003D5B' },
+  'Firewall': { color: '#FF6B35' },
+  'Zero Trust': { color: '#C41E3A' },
+  'Incident Response': { color: '#8B0000' },
+  'SIEM': { color: '#2E5090' },
+  'EDR': { color: '#D62828' },
+  'Active Directory': { color: '#0078D4' },
+  'API Security': { color: '#FF6B6B' },
+  'ISO 27001': { color: '#1F4B7B' },
+
+  // ===== Networking =====
+  'TCP/IP': { color: '#336699' },
+  'BGP': { color: '#336699' },
+  'OSPF': { color: '#336699' },
+  'MPLS': { color: '#336699' },
+  'LAN/WAN': { color: '#336699' },
+  'Cisco': { color: '#1BA0D7' },
+  'CCNA': { color: '#1BA0D7' },
+  'UDP': { color: '#336699' },
+
+  // ===== Systems & Admin =====
+  'Windows Server': { color: '#0078D4' },
+  'PowerShell': { color: '#012456' },
+
+  // ===== Business & Analytics =====
+  'Power BI': { color: '#F2CC8F' },
+  'Power Platform': { color: '#742774' },
+  'Data Analysis': { color: '#4B8BBE' },
+  'SharePoint': { color: '#0078D4' },
+  'Excel VBA': { color: '#217346' },
+  'Automation': { color: '#4CAF50' },
+
+  // ===== General Skills =====
+  'Team Management': { color: '#4CAF50' },
+  'Discord Bot': { color: '#5865F2' },
+
   // ===== Legacy / Enterprise =====
   'J2EE': { color: '#007396' },
   'JSP': { color: '#007396' },

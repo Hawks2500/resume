@@ -3,13 +3,15 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { ChevronDownIcon, GitHubIcon, ExternalLinkIcon } from '@/components/icons'
 import { Modal } from '@/components/ui/Modal'
 import { useBreakpoints } from '@/lib/hooks/useBreakpoints'
+import { assetUrl } from '@/lib/utils'
 import { TechBadge } from './TechBadge'
 
 interface ProjectItemProps {
   title: string
+  logo?: string
   description: string
   techs: string[]
-  details?: string[]
+  projectDetails?: string[]
   expanded: boolean
   onToggle: () => void
   url?: string
@@ -18,9 +20,10 @@ interface ProjectItemProps {
 
 export function ProjectItem({
   title,
+  logo,
   description,
   techs,
-  details,
+  projectDetails,
   expanded,
   onToggle,
   url,
@@ -29,7 +32,7 @@ export function ProjectItem({
   const [isModalOpen, setIsModalOpen] = useState(false)
   const { isDesktop } = useBreakpoints()
 
-  const hasDetails = !!details && details.length > 0
+  const hasDetails = !!projectDetails && projectDetails.length > 0
 
   const handleClick = () => {
     if (!hasDetails) return
@@ -57,6 +60,16 @@ export function ProjectItem({
         aria-expanded={hasDetails ? expanded : undefined}
       >
         <div className="flex items-center gap-2 mb-1 relative">
+          {logo && (
+            <div className="h-7 flex items-center flex-shrink-0">
+              <img
+                src={assetUrl(logo)}
+                alt={`${title} logo`}
+                className="h-full w-auto max-w-[4rem] object-contain"
+                loading="lazy"
+              />
+            </div>
+          )}
           <h3 className="text-sm font-semibold text-resume-text pr-5">{title}</h3>
           {url && (
             <a
@@ -105,7 +118,7 @@ export function ProjectItem({
             >
               <div className="mt-2 mb-1 p-4 bg-resume-bg rounded-lg border border-resume-primary/20">
                 <ul className="text-sm text-resume-text-secondary space-y-1.5">
-                  {details.map((item, i) => (
+                  {projectDetails.map((item, i) => (
                     <li key={i} className="flex items-start gap-2">
                       <span className="text-resume-primary">&#8226;</span>
                       <span>{item}</span>
@@ -130,7 +143,7 @@ export function ProjectItem({
           }
         >
           <ul className="text-sm text-resume-text-secondary space-y-2">
-            {details.map((item, i) => (
+            {projectDetails.map((item, i) => (
               <li key={i} className="flex items-start gap-2">
                 <span className="text-resume-primary">&#8226;</span>
                 <span>{item}</span>

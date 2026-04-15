@@ -3,13 +3,14 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { ChevronDownIcon } from '@/components/icons'
 import { useBreakpoints } from '@/lib/hooks/useBreakpoints'
 import { Modal } from '@/components/ui/Modal'
-import { cn } from '@/lib/utils'
+import { assetUrl, cn } from '@/lib/utils'
 import { TechBadge } from './TechBadge'
 import { ExperienceDetailsContent } from './ExperienceDetails'
 
 interface ExperienceItemProps {
   year: string
   company: string
+  logo?: string
   type?: string
   role: string
   description: string
@@ -36,6 +37,7 @@ interface ExperienceItemProps {
 export function ExperienceItem({
   year,
   company,
+  logo,
   type,
   role,
   description,
@@ -93,6 +95,16 @@ export function ExperienceItem({
               </motion.div>
             )}
             <div className="flex items-center gap-2 flex-wrap pr-6 md:pr-0">
+              {logo && (
+                <div className="h-8 flex items-center flex-shrink-0">
+                  <img
+                    src={assetUrl(logo)}
+                    alt={`${company} logo`}
+                    className="h-full w-auto max-w-[4.5rem] object-contain"
+                    loading="lazy"
+                  />
+                </div>
+              )}
               <h3 className="text-sm font-semibold text-resume-text">{company}</h3>
               {type && (
                 <span className="text-xs px-2 py-0.5 bg-resume-primary/10 text-resume-primary rounded">
