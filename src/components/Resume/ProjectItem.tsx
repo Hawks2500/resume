@@ -4,11 +4,16 @@ import { ChevronDownIcon, GitHubIcon, ExternalLinkIcon } from '@/components/icon
 import { Modal } from '@/components/ui/Modal'
 import { useBreakpoints } from '@/lib/hooks/useBreakpoints'
 import { assetUrl } from '@/lib/utils'
+import { useTheme } from '@/lib/theme'
 import { TechBadge } from './TechBadge'
 
 interface ProjectItemProps {
   title: string
   logo?: string
+  themeLogos?: {
+    light?: string
+    dark?: string
+  }
   description: string
   techs: string[]
   projectDetails?: string[]
@@ -21,6 +26,7 @@ interface ProjectItemProps {
 export function ProjectItem({
   title,
   logo,
+  themeLogos,
   description,
   techs,
   projectDetails,
@@ -31,8 +37,10 @@ export function ProjectItem({
 }: ProjectItemProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const { isDesktop } = useBreakpoints()
+  const { isDark } = useTheme()
 
   const hasDetails = !!projectDetails && projectDetails.length > 0
+  const resolvedLogo = isDark ? themeLogos?.dark ?? logo : themeLogos?.light ?? logo
 
   const handleClick = () => {
     if (!hasDetails) return
@@ -60,10 +68,10 @@ export function ProjectItem({
         aria-expanded={hasDetails ? expanded : undefined}
       >
         <div className="flex items-center gap-2 mb-1 relative">
-          {logo && (
+          {resolvedLogo && (
             <div className="h-7 flex items-center flex-shrink-0">
               <img
-                src={assetUrl(logo)}
+                src={assetUrl(resolvedLogo)}
                 alt={`${title} logo`}
                 className="h-full w-auto max-w-[4rem] object-contain"
                 loading="lazy"

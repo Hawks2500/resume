@@ -86,30 +86,33 @@ export function ExperienceItem({
           </div>
 
           <div className="flex-1 min-w-0 relative">
-            {details && (
-              <motion.div
-                animate={{ rotate: expanded ? 180 : 0 }}
-                className="absolute top-0 right-0"
-              >
-                <ChevronDownIcon className="w-4 h-4 text-resume-primary" />
-              </motion.div>
-            )}
-            <div className="flex items-center gap-2 flex-wrap pr-6 md:pr-0">
-              {logo && (
-                <div className="h-8 flex items-center flex-shrink-0">
-                  <img
-                    src={assetUrl(logo)}
-                    alt={`${company} logo`}
-                    className="h-full w-auto max-w-[4.5rem] object-contain"
-                    loading="lazy"
-                  />
+            <div className="flex w-full items-start gap-2">
+              <div className="flex min-w-0 flex-1 items-center gap-2 flex-wrap md:flex-nowrap">
+                {logo && (
+                  <div className="h-8 flex items-center flex-shrink-0">
+                    <img
+                      src={assetUrl(logo)}
+                      alt={`${company} logo`}
+                      className="h-full w-auto max-w-[4.5rem] object-contain"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
+                <div className="flex min-w-0 items-center gap-2">
+                  <h3 className="min-w-0 whitespace-normal break-words text-sm font-semibold leading-tight text-resume-text">
+                    {company}
+                  </h3>
+                  {type && (
+                    <span className="shrink-0 whitespace-nowrap text-xs px-2 py-0.5 bg-resume-primary/10 text-resume-primary rounded">
+                      {type}
+                    </span>
+                  )}
                 </div>
-              )}
-              <h3 className="text-sm font-semibold text-resume-text">{company}</h3>
-              {type && (
-                <span className="text-xs px-2 py-0.5 bg-resume-primary/10 text-resume-primary rounded">
-                  {type}
-                </span>
+              </div>
+              {details && (
+                <motion.div animate={{ rotate: expanded ? 180 : 0 }} className="shrink-0 pt-0.5">
+                  <ChevronDownIcon className="w-4 h-4 text-resume-primary" />
+                </motion.div>
               )}
             </div>
             <p className="text-xs text-resume-text-secondary mt-0.5">{role}</p>

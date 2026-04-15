@@ -110,6 +110,7 @@ export function MainContent() {
                 key={project.id}
                 title={resolve(project.title)}
                 logo={project.logo}
+                themeLogos={project.themeLogos}
                 description={resolve(project.description)}
                 techs={project.techs}
                 projectDetails={project.details ? resolveArray(project.details) : undefined}

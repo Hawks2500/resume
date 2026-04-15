@@ -61,6 +61,10 @@ export interface Project {
   id: string
   title: LocalizedString
   logo?: string
+  themeLogos?: {
+    light?: string
+    dark?: string
+  }
   description: LocalizedString
   techs: (TechName | (string & {}))[]
   details?: LocalizedStringArray
