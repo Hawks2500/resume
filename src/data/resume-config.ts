@@ -298,7 +298,7 @@ export const resumeConfig: ResumeConfig = {
         'Protocoles de routage (RIP, OSPF, BGP, MPLS)',
         'Conception et déploiement réseaux LAN/WAN',
         'Configuration de firewalls (Stormshield, pfSense)',
-        'Développement d\'applications réseau (UDP Android/Desktop)',
+        'Développement d\'applications réseau (TCP/UDP Android/Desktop)',
         'Certification Cisco CCNA',
       ],
       en: [
@@ -306,7 +306,7 @@ export const resumeConfig: ResumeConfig = {
         'Routing protocols (RIP, OSPF, BGP, MPLS)',
         'LAN/WAN network design and deployment',
         'Firewall configuration (Stormshield, pfSense)',
-        'Network application development (UDP Android/Desktop)',
+        'Network application development (TCP/UDP Android/Desktop)',
         'Cisco CCNA certification',
       ],
     },
