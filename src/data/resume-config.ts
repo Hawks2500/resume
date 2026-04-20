@@ -18,7 +18,7 @@ export const resumeConfig: ResumeConfig = {
   },
 
   seo: {
-    title: 'Yanis Zerrar — Ingénieur Sécurité',
+    title: 'Yanis Zerrar — Cybersecurity Engineer',
     description: 'Interactive resume of Yanis ZERRAR, cybersecurity engineer specialized in GRC, cybersecurity, secure development and automation.',
   },
 
@@ -66,7 +66,9 @@ export const resumeConfig: ResumeConfig = {
       type: 'badges',
       items: [
         { name: 'PHP' },
+        { name: 'Laravel' },
         { name: 'Rust' },
+        { name: 'Python' },
         { name: 'React' },
         { name: 'Node.js' },
         { name: 'REST' },
@@ -104,7 +106,7 @@ export const resumeConfig: ResumeConfig = {
       title: { fr: 'Méthodologies', en: 'Methodologies' },
       type: 'text',
       items: [
-        { name: { fr: 'Sécurité applicative, Agile, SCRUM, ISO 27001', en: 'Application security, Agile, SCRUM, ISO 27001' } },
+        { name: { fr: 'Sécurité applicative, Agile, SCRUM', en: 'Application security, Agile, SCRUM' } },
       ],
     },
     {
@@ -138,25 +140,25 @@ export const resumeConfig: ResumeConfig = {
         tasks: {
           fr: [
             'Participation à la gouvernance SSI (GRC)',
+            'Sensibilisation des utilisateurs aux bonnes pratiques de cybersécurité',
             'Optimisation du traitement des incidents d\'hameçonnage avec une réduction d’environ 25% du temps de traitement',
-            'Sécurisation d\'environnements Active Directory',
             'Développement d\'API sécurisées et scripts d’automatisation (PowerShell + API)',
-            'Exploitation de solutions SIEM et firewall',
             'Supervision et gestion d\'incidents de sécurité',
+            'Sécurisation d\'environnements Active Directory',
             'Intégration et utilisation de MISP pour le partage et l’exploitation de threat intelligence',
             'Développement d’une application desktop MISP (Tauri + React)',
-            'Sensibilisation des utilisateurs aux bonnes pratiques de cybersécurité',
+            'Exploitation de solutions SIEM et firewall',
           ],
           en: [
             'Participation in security governance (GRC)',
+            'User awareness activities to promote cybersecurity best practices',
             'Optimization of phishing incident handling with a 25% reduction in processing time',
-            'Securing Active Directory environments',
             'Development of secure APIs and automation scripts (PowerShell + API)',
-            'Exploitation of SIEM and firewall solutions',
             'Security monitoring and incident response',
+            'Securing Active Directory environments',
             'Integrated and leveraged MISP for threat intelligence sharing and analysis',
             'Development of a MISP desktop application (Tauri + React)',
-            'User awareness activities to promote cybersecurity best practices',
+            'Exploitation of SIEM and firewall solutions',
           ],
         },
         env: {
@@ -185,16 +187,16 @@ export const resumeConfig: ResumeConfig = {
         },
         tasks: {
           fr: [
-            'Gestion de l’infrastructure cloud et des accès (Google Cloud)',
-            'Développement et maintenance de plateformes web',
+            'Administration de l\'infrastructure cloud Google (GCP) : gestion des accès, licences et services',
+            'Développement et déploiement de la plateforme web de l\'association (Laravel, SSO Google, CI/CD)',
             'Création d’outils internes (bot Discord, automatisation)',
             'Analyse SAST pour améliorer la sécurité des applications',
             'Organisation d’événements et ateliers cybersécurité',
             'Coordination des projets techniques de l’association',
           ],
           en: [
-            'Managed cloud infrastructure and access control (Google Cloud)',
-            'Developed and maintained web platforms',
+            'Administered Google Cloud (GCP) infrastructure: access management, licensing and services',
+            'Built and deployed the association\'s web platform (Laravel, Google SSO, CI/CD via GitHub Actions)',
             'Built internal tools (Discord bot, automation systems)',
             'Performed SAST analysis to improve application security',
             'Organized cybersecurity events and workshops',
@@ -234,7 +236,6 @@ export const resumeConfig: ResumeConfig = {
           en: [
             'Developed and deployed a Power Apps solution integrating an external database automatically via Power Automate',
             'Automated team notification workflows, eliminating manual follow-up tasks',
-            'Creation of Power Automate workflows',
             'Migrated Excel-based tracking to SharePoint with VBA-powered table management, centralizing data and reducing manual entry errors',
             'Documentation and user training',
           ],
@@ -309,6 +310,7 @@ export const resumeConfig: ResumeConfig = {
     {
       id: 'data-annotation',
       title: { fr: 'Data Annotation — Conduite Autonome', en: 'Data Annotation — Autonomous Driving' },
+      logo: 'images/utbm.svg',
       description: {
         fr: 'Plateforme web de visualisation et d\'annotation d\'images pour la conduite urbaine autonome.',
         en: 'Web platform for image visualization and annotation in urban autonomous driving contexts.',
@@ -332,25 +334,31 @@ export const resumeConfig: ResumeConfig = {
     },
     {
       id: 'parkinson',
-      title: { fr: 'Recherche Parkinson — VisionMD × CHU de Besançon', en: 'Parkinson Research — VisionMD × CHU Besançon' },
-      description: {
-        fr: 'Projet de recherche en cours : analyse de données médicales pour la détection de la maladie de Parkinson.',
-        en: 'Ongoing research project: medical data analysis for Parkinson\'s disease detection.',
+      title: { 
+        fr: 'Recherche Parkinson — VisionMD × CHU de Besançon', 
+        en: 'Parkinson Research — VisionMD × CHU Besançon' 
       },
-      techs: ['Python', 'Data Analysis', 'Medical Research', 'AI'],
+      logo: 'images/utbm.svg',
+      description: {
+        fr: 'Contribution à un projet de recherche médicale : analyse de données motrices pour la détection et le suivi de la maladie de Parkinson.',
+        en: 'Contributing to a medical research project: motor data analysis for Parkinson\'s disease detection and monitoring.',
+      },
+      techs: ['Python', 'Data Analysis', 'Signal Processing', 'Computer Vision', 'Electron', 'Medical AI'],
       details: {
         fr: [
-          'Collaboration avec l\'équipe de recherche du CHU de Besançon',
-          'Analyse de données médicales pour la détection et le suivi de la maladie de Parkinson',
-          'Projet de recherche en cours — dépôt GitHub à venir',
+          'Collaboration active avec l\'équipe de neurologie du CHU de Besançon',
+          'Analyse et traitement de données de mouvement (capteurs, tremblements, gestes) pour la détection de symptômes parkinsoniens',
+          'Reprise et extension du logiciel open source VisionMD pour intégrer des fonctionnalités adaptées aux besoins cliniques des neurologues',
+          'Développement de visualisations et dashboards pour faciliter l\'interprétation des données motrices par les praticiens',
         ],
         en: [
-          'Collaboration with the research team at Besançon Hospital (CHU)',
-          'Worked on sensitive medical data in a research context',
-          'Medical data analysis for Parkinson\'s disease detection and monitoring',
-          'Ongoing research project — GitHub repository coming soon',
+          'Active collaboration with the neurology research team at Besançon University Hospital (CHU)',
+          'Processing and analyzing motion sensor data (tremors, gestures) for Parkinsonian symptom detection',
+          'Forked and extended the open-source VisionMD software to add features tailored to neurologists\' clinical workflows',
+          'Built data visualizations and dashboards to support medical interpretation of motor patterns',
         ],
       },
+      github: 'https://github.com/Hawks2500/VisionMD',
     },
     {
       id: 'cyberv-platform',
@@ -416,6 +424,8 @@ export const resumeConfig: ResumeConfig = {
     experience: {
       mainTasks: { fr: 'Missions principales :', en: 'Main tasks:' },
       moreTasks: { fr: 'autres missions...', en: 'more tasks...' },
+      showMoreTasks: { fr: 'Afficher les missions restantes', en: 'Show remaining tasks' },
+      showLessTasks: { fr: 'Réduire la liste', en: 'Show fewer tasks' },
       training: { fr: 'Formations :', en: 'Training:' },
       techEnv: { fr: 'Env. technique :', en: 'Tech environment:' },
       technologies: { fr: 'Technologies', en: 'Technologies' },

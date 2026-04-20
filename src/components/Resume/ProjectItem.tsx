@@ -102,7 +102,7 @@ export function ProjectItem({
             </a>
           )}
           {hasDetails && (
-            <motion.div animate={{ rotate: expanded ? 180 : 0 }} className="absolute right-0 top-0">
+            <motion.div animate={{ rotate: expanded ? 180 : 0 }} className="ml-auto">
               <ChevronDownIcon className="w-4 h-4 text-resume-primary" />
             </motion.div>
           )}

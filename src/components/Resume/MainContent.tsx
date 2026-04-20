@@ -28,6 +28,8 @@ export function MainContent() {
   const experienceLabels = {
     mainTasks: resolve(labels.experience.mainTasks),
     moreTasks: resolve(labels.experience.moreTasks),
+    showMoreTasks: resolve(labels.experience.showMoreTasks),
+    showLessTasks: resolve(labels.experience.showLessTasks),
     training: labels.experience.training ? resolve(labels.experience.training) : undefined,
     techEnv: resolve(labels.experience.techEnv),
     technologies: resolve(labels.experience.technologies),

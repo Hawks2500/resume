@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { TechBadge } from './TechBadge'
 
 interface ExperienceDetailsContentProps {
@@ -10,6 +11,8 @@ interface ExperienceDetailsContentProps {
   labels: {
     mainTasks: string
     moreTasks: string
+    showMoreTasks: string
+    showLessTasks: string
     training?: string
     techEnv: string
     technologies: string
@@ -28,6 +31,13 @@ export function ExperienceDetailsContent({
   variant,
 }: ExperienceDetailsContentProps) {
   const MAX_INLINE_TASKS = 6
+  const [showAllTasks, setShowAllTasks] = useState(false)
+  const shouldCollapseTasks = variant === 'inline' && !!tasks && tasks.length > MAX_INLINE_TASKS
+  const visibleTasks: string[] =
+    variant === 'inline' && !showAllTasks && tasks ? tasks.slice(0, MAX_INLINE_TASKS) : tasks ?? []
+  const hiddenTaskCount = shouldCollapseTasks && tasks ? tasks.length - MAX_INLINE_TASKS : 0
+  const showMoreTasksLabel = labels.showMoreTasks || labels.moreTasks
+  const showLessTasksLabel = labels.showLessTasks || labels.moreTasks
 
   return (
     <div className="space-y-3">
@@ -54,18 +64,28 @@ export function ExperienceDetailsContent({
         <div>
           <p className="text-xs font-semibold text-resume-text mb-2">{labels.mainTasks}</p>
           <ul className="text-xs text-resume-text-secondary space-y-1">
-            {(variant === 'inline' ? tasks.slice(0, MAX_INLINE_TASKS) : tasks).map((task, i) => (
+            {visibleTasks.map((task, i) => (
               <li key={i} className="flex items-start gap-2">
                 <span className="text-resume-primary">&#8226;</span>
                 <span>{task}</span>
               </li>
             ))}
-            {variant === 'inline' && tasks.length > MAX_INLINE_TASKS && (
+            {shouldCollapseTasks && !showAllTasks && (
               <li className="text-resume-primary italic">
-                +{tasks.length - MAX_INLINE_TASKS} {labels.moreTasks}
+                +{hiddenTaskCount} {labels.moreTasks}
               </li>
             )}
           </ul>
+          {shouldCollapseTasks && (
+            <button
+              type="button"
+              onClick={() => setShowAllTasks((value) => !value)}
+              className="mt-2 inline-flex items-center rounded-full border border-resume-primary/20 bg-resume-primary/5 px-3 py-1 text-[11px] font-medium text-resume-primary transition-colors hover:bg-resume-primary/10"
+              aria-expanded={showAllTasks}
+            >
+              {showAllTasks ? showLessTasksLabel : `${showMoreTasksLabel} (+${hiddenTaskCount})`}
+            </button>
+          )}
         </div>
       )}
 

@@ -128,6 +128,8 @@ export interface ResumeLabels {
   experience: {
     mainTasks: LocalizedString
     moreTasks: LocalizedString
+    showMoreTasks: LocalizedString
+    showLessTasks: LocalizedString
     training?: LocalizedString
     techEnv: LocalizedString
     technologies: LocalizedString
