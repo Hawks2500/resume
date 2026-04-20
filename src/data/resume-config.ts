@@ -44,7 +44,6 @@ export const resumeConfig: ResumeConfig = {
         { name: { fr: 'Français', en: 'French' }, level: { fr: 'Natif', en: 'Native' } },
         { name: { fr: 'Anglais', en: 'English' }, level: { fr: 'B2', en: 'B2' } },
         { name: { fr: 'Allemand', en: 'German' }, level: { fr: 'B1', en: 'B1' } },
-        { name: { fr: 'Arabe', en: 'Arabic' }, level: { fr: 'B1', en: 'B1' } },
       ],
     },
     {
