@@ -69,6 +69,8 @@ export function MainContent() {
               year={resolve(exp.period)}
               company={resolve(exp.company)}
               logo={exp.logo}
+              website={exp.website}
+              themeLogos={exp.themeLogos}
               type={exp.type ? resolve(exp.type) : undefined}
               role={resolve(exp.role)}
               description={resolve(exp.description)}

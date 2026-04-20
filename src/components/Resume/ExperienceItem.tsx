@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronDownIcon } from '@/components/icons'
+import { ChevronDownIcon, ExternalLinkIcon } from '@/components/icons'
 import { useBreakpoints } from '@/lib/hooks/useBreakpoints'
 import { Modal } from '@/components/ui/Modal'
 import { assetUrl, cn } from '@/lib/utils'
+import { useTheme } from '@/lib/theme'
 import { TechBadge } from './TechBadge'
 import { ExperienceDetailsContent } from './ExperienceDetails'
 
@@ -11,6 +12,11 @@ interface ExperienceItemProps {
   year: string
   company: string
   logo?: string
+  website?: string
+  themeLogos?: {
+    light?: string
+    dark?: string
+  }
   type?: string
   role: string
   description: string
@@ -27,6 +33,8 @@ interface ExperienceItemProps {
   labels: {
     mainTasks: string
     moreTasks: string
+    showMoreTasks: string
+    showLessTasks: string
     training?: string
     techEnv: string
     technologies: string
@@ -38,6 +46,8 @@ export function ExperienceItem({
   year,
   company,
   logo,
+  website,
+  themeLogos,
   type,
   role,
   description,
@@ -51,6 +61,9 @@ export function ExperienceItem({
 }: ExperienceItemProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const { isDesktop } = useBreakpoints()
+  const { isDark } = useTheme()
+  const resolvedLogo = isDark ? themeLogos?.dark ?? logo : themeLogos?.light ?? logo
+
   const handleClick = () => {
     if (!details) return
     if (isDesktop) {
@@ -68,9 +81,18 @@ export function ExperienceItem({
       whileHover={isHighlighted ? { scale: 1.02 } : {}}
       transition={{ duration: 0.2 }}
     >
-      <button
+      <div
         onClick={handleClick}
+        onKeyDown={(e) => {
+          if (!details) return
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault()
+            handleClick()
+          }
+        }}
         aria-expanded={details ? expanded : undefined}
+        role={details ? 'button' : undefined}
+        tabIndex={details ? 0 : undefined}
         className="w-full text-left group relative z-10 cursor-pointer"
       >
         <div
@@ -88,10 +110,10 @@ export function ExperienceItem({
           <div className="flex-1 min-w-0 relative">
             <div className="flex w-full items-start gap-2">
               <div className="flex min-w-0 flex-1 items-center gap-2 flex-wrap md:flex-nowrap">
-                {logo && (
+                {resolvedLogo && (
                   <div className="h-8 flex items-center flex-shrink-0">
                     <img
-                      src={assetUrl(logo)}
+                      src={assetUrl(resolvedLogo)}
                       alt={`${company} logo`}
                       className="h-full w-auto max-w-[4.5rem] object-contain"
                       loading="lazy"
@@ -102,6 +124,18 @@ export function ExperienceItem({
                   <h3 className="min-w-0 whitespace-normal break-words text-sm font-semibold leading-tight text-resume-text">
                     {company}
                   </h3>
+                  {website && (
+                    <a
+                      href={website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`Visit ${company}`}
+                      onClick={(e) => e.stopPropagation()}
+                      className="shrink-0 text-resume-primary hover:text-resume-primary/80 transition-colors"
+                    >
+                      <ExternalLinkIcon className="w-3.5 h-3.5" />
+                    </a>
+                  )}
                   {type && (
                     <span className="shrink-0 whitespace-nowrap text-xs px-2 py-0.5 bg-resume-primary/10 text-resume-primary rounded">
                       {type}
@@ -132,7 +166,7 @@ export function ExperienceItem({
             )}
           </div>
         </div>
-      </button>
+      </div>
 
       {isDesktop && details && (
         <AnimatePresence>

@@ -37,6 +37,11 @@ export interface Experience {
   id: string
   company: LocalizedString
   logo?: string
+  website?: string
+  themeLogos?: {
+    light?: string
+    dark?: string
+  }
   role: LocalizedString
   type?: LocalizedString
   period: LocalizedString
