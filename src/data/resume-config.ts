@@ -11,8 +11,8 @@ export const resumeConfig: ResumeConfig = {
       en: 'Cybersecurity Engineer | Secure Systems, Application Security',
     },
     subtitle: {
-      fr: 'Cybersécurité & développement sécurisé | APIs, Automatisation & Threat Intelligence \nRecherche de stage à l\'étranger en Suisse ou Allemagne du 29 juin 2026 au 7 septembre 2026',
-      en: 'Cybersecurity & Secure Development | APIs, Automation & Threat Intelligence \nLooking for an internship in Switzerland or Germany (June 29 – September 7, 2026)'
+      fr: 'Cybersécurité & développement sécurisé | APIs, Automatisation & Threat Intelligence',
+      en: 'Cybersecurity & Secure Development | APIs, Automation & Threat Intelligence'
     },
     location: 'France',
   },
