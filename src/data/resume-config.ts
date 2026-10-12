@@ -42,7 +42,7 @@ export const resumeConfig: ResumeConfig = {
   // the code out of this committed file; `unlockCode` here is just a local-dev fallback.
   confidential: {
     enabled: true,
-    defaultMode: 'confidential',
+    defaultMode: 'full', // page opens on the full profile; the lock button switches to confidential
     unlockCode: 'CHANGE_ME', // local-dev fallback; production uses the UNLOCK_CODE secret
   },
 
@@ -74,7 +74,6 @@ export const resumeConfig: ResumeConfig = {
     { type: 'linkedin', label: 'Yanis ZERRAR', href: 'https://www.linkedin.com/in/yanis-zerrar/' },
     { type: 'github', label: 'Hawks2500', href: 'https://github.com/Hawks2500' },
     { type: 'email', label: 'yanis.zerrar@gmail.com', href: 'mailto:yanis.zerrar@gmail.com' },
-    { type: 'phone', label: '+33 7 66 55 67 05' },
     { type: 'location', label: 'Montbéliard, France' },
   ],
 
