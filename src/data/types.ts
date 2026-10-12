@@ -12,6 +12,14 @@ export interface ContactItem {
   type: ContactType
   label: string
   href?: string
+  /**
+   * Label shown instead of `label` when confidential mode is active.
+   * If omitted, sensitive items (email, phone, github, linkedin, website) are
+   * hidden entirely in confidential mode; `location` stays visible.
+   */
+  confidentialLabel?: string
+  /** Force this item to stay visible in confidential mode (default: location only). */
+  showWhenConfidential?: boolean
 }
 
 // ===== SKILLS =====
@@ -36,6 +44,8 @@ import type { TechName } from './tech-registry'
 export interface Experience {
   id: string
   company: LocalizedString
+  /** Anonymized employer name shown in confidential mode (logo/website are hidden). */
+  confidentialCompany?: LocalizedString
   logo?: string
   website?: string
   themeLogos?: {
@@ -65,6 +75,8 @@ export interface Experience {
 export interface Project {
   id: string
   title: LocalizedString
+  /** Anonymized project title shown in confidential mode (logo/links are hidden). */
+  confidentialTitle?: LocalizedString
   logo?: string
   themeLogos?: {
     light?: string
@@ -75,6 +87,21 @@ export interface Project {
   details?: LocalizedStringArray
   url?: string
   github?: string
+}
+
+// ===== CERTIFICATIONS =====
+
+export interface Certification {
+  name: LocalizedString | string
+  /** Issuing body, e.g. "PECB" or "Cisco". */
+  issuer?: string
+  /** Status / date line, e.g. "Obtenu 2023" or "En préparation · examen oct. 2026". */
+  status?: LocalizedString
+  /** True once the certification is actually obtained (drives the status pill color). */
+  obtained?: boolean
+  /** Optional issuer logo (e.g. "images/pecb.svg"), shown next to the certification. */
+  logo?: string
+  url?: string
 }
 
 // ===== EDUCATION =====
@@ -127,6 +154,7 @@ export interface ResumeLabels {
     skills: LocalizedString
     experience: LocalizedString
     education: LocalizedString
+    certifications?: LocalizedString
     projects?: LocalizedString
     hobbies?: LocalizedString
   }
@@ -151,15 +179,48 @@ export interface ResumeLabels {
 export interface ResumeConfig {
   personal: {
     name: string
+    /** Display name used in confidential mode. If omitted, derived as "First L.". */
+    confidentialName?: string
     photo?: string
     photoBackEmoji?: string
     title: LocalizedString
     subtitle?: LocalizedString
     location?: string
+    /** Location shown in confidential mode (defaults to `location`, which is already coarse). */
+    confidentialLocation?: string
   }
   seo: {
     title: string
     description: string
+  }
+  /** Availability / open-to-work badge. */
+  availability?: {
+    available: boolean
+    label: LocalizedString
+    /** Optional, editable availability window, e.g. "29 juin - 7 sept. 2026". */
+    period?: LocalizedString
+  }
+  /**
+   * Confidential mode - UX-only masking of personal/employer data.
+   *
+   * ⚠️ NOT a security feature. The site is a static client-side bundle: the
+   * hidden data AND `unlockCode` both ship in the public JavaScript and can be
+   * read by anyone inspecting the bundle. It only controls the default display.
+   * Never store real secrets here.
+   */
+  confidential?: {
+    enabled?: boolean
+    /** What a fresh visitor sees first. Default: 'confidential'. */
+    defaultMode?: 'confidential' | 'full'
+    /** Client-side unlock code (see warning above). */
+    unlockCode: string
+  }
+  /** Misc metadata shown in the footer. */
+  meta?: {
+    /** e.g. "2026" or "2026-10". */
+    lastUpdated?: string
+    /** Public URL used by the share button (falls back to the current page URL). */
+    publicUrl?: string
   }
   languages: {
     default: string
@@ -170,12 +231,20 @@ export interface ResumeConfig {
   skills: SkillCategory[]
   experiences: Experience[]
   education: Education[]
+  certifications?: Certification[]
   projects?: Project[]
   hobbies?: Hobby[]
   pdf?: {
     label?: LocalizedString
     /** Single path for all languages, or one path per language (hides button if no PDF for current language) */
     path: string | LocalizedString
+    /**
+     * Anonymized CV served while confidential mode is active. If omitted, the
+     * download button is hidden in confidential mode so the full-identity CV is
+     * not linked. Note: like confidential mode itself, this is UX-only — any file
+     * placed in `public/` is reachable by its direct URL if someone knows it.
+     */
+    confidentialPath?: string | LocalizedString
   }
   theme?: {
     preset?: PresetName

@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useTranslation } from '@/lib/i18n'
+import { ui } from '@/lib/i18n/ui-strings'
 import { resumeConfig } from '@/data/resume-config'
+import { useConfidential } from '@/lib/confidential'
 import { assetUrl } from '@/lib/utils'
 import { detectedAssets } from 'virtual:detected-assets'
 import { SidebarSection } from './SidebarSection'
@@ -49,7 +51,7 @@ function SidebarPhoto({ photo, name, emoji }: { photo?: string; name: string; em
         style={{ transformStyle: 'preserve-3d' }}
         role="button"
         tabIndex={0}
-        aria-label={`Photo of ${name} — click to flip`}
+        aria-label={`Photo of ${name} - click to flip`}
       >
         <div
           className="absolute inset-0 rounded-full overflow-hidden border-4 border-resume-bg/30 shadow-lg"
@@ -76,36 +78,58 @@ function SidebarPhoto({ photo, name, emoji }: { photo?: string; name: string; em
 
 export function Sidebar() {
   const { resolve } = useTranslation()
+  const { isConfidential } = useConfidential()
   const { personal, contact, skills, hobbies, labels } = resumeConfig
+
+  const realPhoto = personal.photo || detectedAssets.photo
+  const visibleContacts = contact.filter(
+    (c) => !isConfidential || c.showWhenConfidential || c.type === 'location' || !!c.confidentialLabel,
+  )
+  const hiddenContactCount = contact.length - visibleContacts.length
 
   return (
     <div className="md:w-[38%] bg-gradient-to-b from-resume-sidebar-from to-resume-sidebar-to p-8">
-      {/* Photo / Profile image — priority: config > auto-detected > emoji fallback */}
+      {/* Photo / Profile image - hidden in confidential mode (emoji fallback shown) */}
       <SidebarPhoto
-        photo={(personal.photo || detectedAssets.photo) ? assetUrl(personal.photo || detectedAssets.photo!) : undefined}
-        name={personal.name}
+        photo={!isConfidential && realPhoto ? assetUrl(realPhoto) : undefined}
+        name={isConfidential ? 'Profile' : personal.name}
         emoji={personal.photoBackEmoji}
       />
 
       {/* Contact */}
-      <SidebarSection title={resolve(labels.sections.contact)}>
-        <div className="space-y-3">
-          {contact.map((item) => (
-            <ContactItem key={`${item.type}-${item.label}`} type={item.type} label={item.label} href={item.href} />
-          ))}
-        </div>
-      </SidebarSection>
+      <section id="contact" className="mb-6 scroll-mt-20" aria-label={resolve(labels.sections.contact)}>
+        <SidebarSection title={resolve(labels.sections.contact)}>
+          <div className="space-y-3">
+            {visibleContacts.map((item) => {
+              if (isConfidential && item.type !== 'location' && item.confidentialLabel) {
+                return (
+                  <p key={`${item.type}-${item.label}`} className="text-sm text-resume-text-secondary">
+                    {item.confidentialLabel}
+                  </p>
+                )
+              }
+              return (
+                <ContactItem key={`${item.type}-${item.label}`} type={item.type} label={item.label} href={item.href} />
+              )
+            })}
+            {isConfidential && hiddenContactCount > 0 && (
+              <p className="text-xs italic text-resume-text-secondary/70">{resolve(ui.contactHidden)}</p>
+            )}
+          </div>
+        </SidebarSection>
+      </section>
 
       {/* Skills */}
+      <section id="skills" className="scroll-mt-20" aria-label={resolve(labels.sections.skills)}>
       <SidebarSection title={resolve(labels.sections.skills)}>
-        <div className="space-y-4">
+        <div className="space-y-5">
           {skills.map((category, i) => (
             <SkillCategory key={`${resolve(category.title)}-${i}`} title={resolve(category.title)}>
               {category.type === 'badges' && (
                 <div className="flex flex-wrap gap-1.5">
-                  {category.items.map((item) => {
-                    const techName = typeof item.name === 'string' ? item.name : Object.values(item.name)[0]
-                    return <TechBadge key={techName} tech={techName} color={item.color} />
+                  {category.items.map((item, idx) => {
+                    const techName = typeof item.name === 'string' ? item.name : resolve(item.name)
+                    return <TechBadge key={`${techName}-${idx}`} tech={techName} color={item.color} />
                   })}
                 </div>
               )}
@@ -137,9 +161,11 @@ export function Sidebar() {
           ))}
         </div>
       </SidebarSection>
+      </section>
 
       {/* Hobbies */}
       {hobbies && hobbies.length > 0 && labels.sections.hobbies && (
+        <section id="hobbies" className="scroll-mt-20">
         <SidebarSection title={resolve(labels.sections.hobbies)}>
           <div className="grid grid-cols-2 gap-3">
             {hobbies.map((hobby, i) => (
@@ -154,6 +180,7 @@ export function Sidebar() {
             ))}
           </div>
         </SidebarSection>
+        </section>
       )}
     </div>
   )

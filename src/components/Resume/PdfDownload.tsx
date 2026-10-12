@@ -1,27 +1,46 @@
 import { DownloadIcon } from '@/components/icons'
 import { useTranslation } from '@/lib/i18n'
 import { resumeConfig } from '@/data/resume-config'
+import { useConfidential } from '@/lib/confidential'
 import { assetUrl } from '@/lib/utils'
 import { detectedAssets } from 'virtual:detected-assets'
+import type { LocalizedString } from '@/data/types'
 
 const DEFAULT_LABELS: Record<string, string> = {
   fr: 'Télécharger le PDF',
   en: 'Download PDF',
+  de: 'PDF herunterladen',
+}
+
+function resolvePdfPath(path: string | LocalizedString, language: string): string | null {
+  return typeof path === 'string' ? path : path[language] ?? null
 }
 
 export function PdfDownload() {
   const { language, resolve } = useTranslation()
+  const { isConfidential } = useConfidential()
 
-  // Priority: explicit config > auto-detected from public/cv/<lang>/
+  // Resolve which PDF to offer.
+  // - Confidential view: only the anonymized `confidentialPath` (if provided),
+  //   otherwise no link so the full-identity CV is not exposed.
+  // - Full view: explicit config path > auto-detected public/cv/<lang>/.
   let resolvedPath: string | null = null
 
-  if (resumeConfig.pdf) {
-    const { path } = resumeConfig.pdf
-    resolvedPath = typeof path === 'string'
-      ? path
-      : path[language] ?? null
-  } else if (detectedAssets.pdf[language]) {
-    resolvedPath = detectedAssets.pdf[language]
+  if (isConfidential) {
+    if (resumeConfig.pdf?.confidentialPath) {
+      resolvedPath = resolvePdfPath(resumeConfig.pdf.confidentialPath, language)
+    }
+  } else if (resumeConfig.pdf) {
+    resolvedPath = resolvePdfPath(resumeConfig.pdf.path, language)
+  } else {
+    // Auto-detected PDFs: current language, then English, then the default
+    // language — so a language without its own CV (e.g. DE) still offers one.
+    const fallback = resumeConfig.languages.default
+    resolvedPath =
+      detectedAssets.pdf[language] ??
+      detectedAssets.pdf.en ??
+      detectedAssets.pdf[fallback] ??
+      null
   }
 
   if (!resolvedPath) return null

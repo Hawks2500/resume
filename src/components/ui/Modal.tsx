@@ -17,15 +17,26 @@ export function Modal({ isOpen, onClose, children, title, header, closeLabel = '
   const previousActiveElement = useRef<HTMLElement | null>(null)
   const titleId = useId()
 
+  // Keep a stable ref to onClose so the focus/keydown effect below only re-runs
+  // when `isOpen` changes. Otherwise an inline onClose (re-created on every parent
+  // render, e.g. on each keystroke in a modal input) would re-run this effect and
+  // steal focus back to the modal container after the first character.
+  const onCloseRef = useRef(onClose)
+  useEffect(() => {
+    onCloseRef.current = onClose
+  }, [onClose])
+
   useEffect(() => {
     if (!isOpen) return
 
     previousActiveElement.current = document.activeElement as HTMLElement
-    modalRef.current?.focus()
+    // Focus the first form field if present (e.g. the unlock input), else the dialog.
+    const firstField = modalRef.current?.querySelector<HTMLElement>('input, textarea, select')
+    ;(firstField ?? modalRef.current)?.focus()
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
-        onClose()
+        onCloseRef.current()
       }
 
       if (e.key === 'Tab' && modalRef.current) {
@@ -53,7 +64,7 @@ export function Modal({ isOpen, onClose, children, title, header, closeLabel = '
       document.body.style.overflow = ''
       previousActiveElement.current?.focus()
     }
-  }, [isOpen, onClose])
+  }, [isOpen])
 
   return createPortal(
     <AnimatePresence>

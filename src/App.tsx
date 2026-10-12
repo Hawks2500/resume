@@ -1,6 +1,8 @@
 import { lazy, Suspense, useEffect } from 'react'
+import { MotionConfig } from 'framer-motion'
 import { LanguageProvider } from '@/lib/i18n'
 import { ThemeProvider, useTheme } from '@/lib/theme'
+import { ConfidentialProvider } from '@/lib/confidential'
 import { Resume } from '@/components/Resume'
 import { presets } from '@/data/presets'
 import type { PresetName } from '@/data/types'
@@ -81,10 +83,15 @@ export default function App() {
   return (
     <ThemeProvider>
       <LanguageProvider>
-        <SeoHead />
-        <ThemeVarsInjector>
-          <Resume />
-        </ThemeVarsInjector>
+        <ConfidentialProvider>
+          <SeoHead />
+          <ThemeVarsInjector>
+            {/* Respect the OS "reduce motion" setting for all framer-motion animations. */}
+            <MotionConfig reducedMotion="user">
+              <Resume />
+            </MotionConfig>
+          </ThemeVarsInjector>
+        </ConfidentialProvider>
       </LanguageProvider>
       {import.meta.env.DEV && (
         <>

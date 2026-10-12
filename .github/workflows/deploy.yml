@@ -43,6 +43,10 @@ jobs:
         run: npm run build
         env:
           VITE_BASE_PATH: ${{ steps.base.outputs.path }}
+          # Confidential-mode unlock code, pulled from the repo secret UNLOCK_CODE.
+          # ⚠️ Inlined into the public bundle at build time — not secret at runtime,
+          # it only keeps the code out of the committed source. See ConfidentialProvider.
+          VITE_UNLOCK_CODE: ${{ secrets.UNLOCK_CODE }}
 
       - uses: actions/upload-pages-artifact@v3
         with:

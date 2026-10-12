@@ -189,6 +189,16 @@ const TECH_REGISTRY = {
   'Active Directory': { color: '#0078D4' },
   'API Security': { color: '#FF6B6B' },
   'ISO 27001': { color: '#1F4B7B' },
+  'ISO 27005': { color: '#1F4B7B' },
+  'NIS2': { color: '#2E5A88' },
+  'Egerie': { color: '#5B2A86' },
+  'MISP': { color: '#2E5EAA' },
+  'OSINT': { color: '#4B8BBE' },
+  'ITIL': { color: '#0B6E4F' },
+  'GRC': { color: '#1F4B7B' },
+  'Risk Management': { color: '#1F4B7B' },
+  'Networking': { color: '#336699' },
+  'Project Management': { color: '#4CAF50' },
 
   // ===== Networking =====
   'TCP/IP': { color: '#336699' },
@@ -196,6 +206,7 @@ const TECH_REGISTRY = {
   'OSPF': { color: '#336699' },
   'MPLS': { color: '#336699' },
   'LAN/WAN': { color: '#336699' },
+  'OSI': { color: '#336699' },
   'Cisco': { color: '#1BA0D7' },
   'CCNA': { color: '#1BA0D7' },
   'UDP': { color: '#336699' },
@@ -207,10 +218,13 @@ const TECH_REGISTRY = {
   // ===== Business & Analytics =====
   'Power BI': { color: '#F2CC8F' },
   'Power Platform': { color: '#742774' },
+  'Power Automate': { color: '#0066FF' },
   'Data Analysis': { color: '#4B8BBE' },
   'SharePoint': { color: '#0078D4' },
   'Excel VBA': { color: '#217346' },
+  'VBA': { color: '#217346' },
   'Automation': { color: '#4CAF50' },
+  'CI/CD': { color: '#4CAF50' },
 
   // ===== General Skills =====
   'Team Management': { color: '#4CAF50' },

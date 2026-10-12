@@ -103,8 +103,19 @@ export function ExperienceItem({
               : 'hover:bg-resume-primary/5'
           )}
         >
-          <div className="w-20 flex-shrink-0">
-            <span className="text-sm font-bold text-resume-primary">{year}</span>
+          <div className="w-16 flex-shrink-0 pt-0.5 text-right">
+            <span className="text-xs font-bold text-resume-primary md:text-sm">{year}</span>
+          </div>
+
+          {/* Timeline rail + dot */}
+          <div className="relative w-3 flex-shrink-0 self-stretch" aria-hidden="true">
+            <span
+              className={cn(
+                'absolute left-1/2 top-1.5 h-2.5 w-2.5 -translate-x-1/2 rounded-full border-2 border-resume-primary',
+                isHighlighted ? 'bg-resume-primary' : 'bg-resume-bg-card',
+              )}
+            />
+            <span className="absolute bottom-[-1.25rem] left-1/2 top-5 w-px -translate-x-1/2 bg-resume-primary/15" />
           </div>
 
           <div className="flex-1 min-w-0 relative">
@@ -149,8 +160,8 @@ export function ExperienceItem({
                 </motion.div>
               )}
             </div>
-            <p className="text-xs text-resume-text-secondary mt-0.5">{role}</p>
-            <p className="text-xs text-resume-text-secondary/80 mt-1 line-clamp-2">{description}</p>
+            <p className="text-sm font-medium text-resume-text mt-0.5">{role}</p>
+            <p className="text-xs text-resume-text-secondary mt-1 line-clamp-2">{description}</p>
 
             <div className="flex flex-wrap gap-1.5 mt-2">
               {techs.map((tech) => (
@@ -177,7 +188,7 @@ export function ExperienceItem({
               exit={{ opacity: 0, height: 0 }}
               className="overflow-hidden"
             >
-              <div className="ml-24 mt-2 mb-4 p-4 bg-resume-bg rounded-lg border border-resume-primary/20">
+              <div className="ml-[6.75rem] mt-2 mb-4 p-4 bg-resume-bg rounded-lg border border-resume-primary/20">
                 <ExperienceDetailsContent
                   context={details.context}
                   tasks={details.tasks}

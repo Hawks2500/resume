@@ -35,6 +35,10 @@
   --resume-sidebar-to: #0a0a0a;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: system-ui, -apple-system, sans-serif;
@@ -47,4 +51,19 @@ body {
 
 * {
   box-sizing: border-box;
+}
+
+/* Honor the OS "reduce motion" preference for CSS transitions/animations.
+   (framer-motion is handled separately via <MotionConfig reducedMotion="user">.) */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

@@ -123,7 +123,7 @@ function buildNoscriptHtml(
   resolve: (ls: Record<string, string>) => string,
   base: string,
 ): string {
-  const { personal, contact, skills, experiences, education, projects, hobbies, pdf } = config
+  const { personal, contact, skills, experiences, education, certifications, projects, hobbies, pdf } = config
   const lines: string[] = []
 
   const indent = '      '
@@ -181,7 +181,7 @@ function buildNoscriptHtml(
     lines.push(`${indent}    <h2 style="font-size: 1.1rem; text-transform: uppercase; color: #333; border-bottom: 1px solid #eee; padding-bottom: 0.25rem; margin-bottom: 0.5rem;">${escapeHtml(resolve(config.labels.sections.experience))}</h2>`)
     for (const exp of experiences) {
       lines.push(`${indent}    <article style="margin-bottom: 1.25rem;">`)
-      lines.push(`${indent}      <h3 style="margin: 0 0 0.15rem 0; font-size: 1rem;">${escapeHtml(resolve(exp.role))} — ${escapeHtml(resolve(exp.company))}</h3>`)
+      lines.push(`${indent}      <h3 style="margin: 0 0 0.15rem 0; font-size: 1rem;">${escapeHtml(resolve(exp.role))} - ${escapeHtml(resolve(exp.company))}</h3>`)
       const meta = [resolve(exp.period)]
       if (exp.type) meta.push(resolve(exp.type))
       lines.push(`${indent}      <p style="margin: 0 0 0.25rem 0; color: #777; font-size: 0.9rem;">${escapeHtml(meta.join(' · '))}</p>`)
@@ -218,6 +218,20 @@ function buildNoscriptHtml(
       if (edu.period) eduMeta.push(edu.period)
       lines.push(`${indent}      <p style="margin: 0; color: #777; font-size: 0.9rem;">${escapeHtml(eduMeta.join(' · '))}</p>`)
       lines.push(`${indent}    </div>`)
+    }
+    lines.push(`${indent}  </section>`)
+  }
+
+  // Certifications
+  if (certifications && certifications.length > 0 && config.labels.sections.certifications) {
+    lines.push(`${indent}  <section style="margin-bottom: 1.5rem;">`)
+    lines.push(`${indent}    <h2 style="font-size: 1.1rem; text-transform: uppercase; color: #333; border-bottom: 1px solid #eee; padding-bottom: 0.25rem; margin-bottom: 0.5rem;">${escapeHtml(resolve(config.labels.sections.certifications))}</h2>`)
+    for (const cert of certifications) {
+      const certName = typeof cert.name === 'string' ? cert.name : resolve(cert.name)
+      const parts = [certName]
+      if (cert.issuer) parts.push(cert.issuer)
+      if (cert.status) parts.push(resolve(cert.status))
+      lines.push(`${indent}    <p style="margin: 0 0 0.25rem 0;">${escapeHtml(parts.join(' · '))}</p>`)
     }
     lines.push(`${indent}  </section>`)
   }

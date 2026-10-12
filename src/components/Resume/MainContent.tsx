@@ -1,14 +1,17 @@
 import { useState } from 'react'
 import { useTranslation } from '@/lib/i18n'
 import { resumeConfig } from '@/data/resume-config'
+import { useConfidential } from '@/lib/confidential'
+import { Hero } from './Hero'
 import { ExperienceItem } from './ExperienceItem'
 import { ProjectItem } from './ProjectItem'
 import { EducationItem } from './EducationItem'
+import { CertificationItem } from './CertificationItem'
 
 export function MainContent() {
   const { resolve, resolveArray } = useTranslation()
-  const { personal, experiences, projects, education, labels } = resumeConfig
-  const subtitle = personal.subtitle ? resolve(personal.subtitle) : undefined
+  const { isConfidential } = useConfidential()
+  const { experiences, projects, education, certifications, labels } = resumeConfig
   const [expandedExp, setExpandedExp] = useState<string | null>(null)
   const [expandedProject, setExpandedProject] = useState<string | null>(null)
   const [expandedEdu, setExpandedEdu] = useState<number | null>(null)
@@ -37,40 +40,26 @@ export function MainContent() {
 
   return (
     <div className="md:w-[62%] p-8">
-      {/* Header */}
-      <div className="text-center mb-8">
-        <h1 className="text-3xl md:text-4xl font-bold tracking-[0.15em] text-resume-text">
-          {personal.name.toUpperCase()}
-        </h1>
-        <p className="text-base text-resume-text-secondary tracking-widest mt-2">
-          {resolve(personal.title).toUpperCase()}
-        </p>
-        {subtitle && (
-          <p className="text-sm text-resume-primary mt-1">
-            {subtitle.split('\n').map((line, i) => (
-              <span key={i}>
-                {line}
-                {i < subtitle.split('\n').length - 1 && <br />}
-              </span>
-            ))}
-          </p>
-        )}
-      </div>
+      <Hero />
 
       {/* Experiences */}
-      <div className="relative">
+      <div id="experience" className="relative scroll-mt-20">
         <h2 className="text-sm font-bold tracking-widest text-resume-text mb-6 pb-2 border-b border-resume-primary/20">
           {resolve(labels.sections.experience)}
         </h2>
         <div className="space-y-2">
-          {experiences.map((exp) => (
+          {experiences.map((exp) => {
+            const company = resolve(
+              isConfidential && exp.confidentialCompany ? exp.confidentialCompany : exp.company,
+            )
+            return (
             <ExperienceItem
               key={exp.id}
               year={resolve(exp.period)}
-              company={resolve(exp.company)}
-              logo={exp.logo}
-              website={exp.website}
-              themeLogos={exp.themeLogos}
+              company={company}
+              logo={isConfidential ? undefined : exp.logo}
+              website={isConfidential ? undefined : exp.website}
+              themeLogos={isConfidential ? undefined : exp.themeLogos}
               type={exp.type ? resolve(exp.type) : undefined}
               role={resolve(exp.role)}
               description={resolve(exp.description)}
@@ -98,13 +87,14 @@ export function MainContent() {
               labels={experienceLabels}
               isHighlighted={exp.isHighlighted}
             />
-          ))}
+            )
+          })}
         </div>
       </div>
 
       {/* Projects */}
       {projects && projects.length > 0 && labels.sections.projects && (
-        <div className="mt-8">
+        <div id="projects" className="mt-8 scroll-mt-20">
           <h2 className="text-sm font-bold tracking-widest text-resume-text mb-4 pb-2 border-b border-resume-primary/20">
             {resolve(labels.sections.projects)}
           </h2>
@@ -112,16 +102,20 @@ export function MainContent() {
             {projects.map((project) => (
               <ProjectItem
                 key={project.id}
-                title={resolve(project.title)}
-                logo={project.logo}
-                themeLogos={project.themeLogos}
+                title={resolve(
+                  isConfidential && project.confidentialTitle
+                    ? project.confidentialTitle
+                    : project.title,
+                )}
+                logo={isConfidential ? undefined : project.logo}
+                themeLogos={isConfidential ? undefined : project.themeLogos}
                 description={resolve(project.description)}
                 techs={project.techs}
                 projectDetails={project.details ? resolveArray(project.details) : undefined}
                 expanded={expandedProject === project.id}
                 onToggle={() => toggleProject(project.id)}
-                url={project.url}
-                github={project.github}
+                url={isConfidential ? undefined : project.url}
+                github={isConfidential ? undefined : project.github}
               />
             ))}
           </div>
@@ -129,7 +123,7 @@ export function MainContent() {
       )}
 
       {/* Education */}
-      <div className="mt-8">
+      <div id="education" className="mt-8 scroll-mt-20">
         <h2 className="text-sm font-bold tracking-widest text-resume-text mb-4 pb-2 border-b border-resume-primary/20">
           {resolve(labels.sections.education)}
         </h2>
@@ -150,6 +144,28 @@ export function MainContent() {
           ))}
         </div>
       </div>
+
+      {/* Certifications */}
+      {certifications && certifications.length > 0 && labels.sections.certifications && (
+        <div id="certifications" className="mt-8 scroll-mt-20">
+          <h2 className="text-sm font-bold tracking-widest text-resume-text mb-4 pb-2 border-b border-resume-primary/20">
+            {resolve(labels.sections.certifications)}
+          </h2>
+          <div className="space-y-1">
+            {certifications.map((cert, i) => (
+              <CertificationItem
+                key={`${typeof cert.name === 'string' ? cert.name : resolve(cert.name)}-${i}`}
+                name={typeof cert.name === 'string' ? cert.name : resolve(cert.name)}
+                issuer={cert.issuer}
+                status={cert.status ? resolve(cert.status) : undefined}
+                obtained={cert.obtained}
+                logo={cert.logo}
+                url={cert.url}
+              />
+            ))}
+          </div>
+        </div>
+      )}
     </div>
   )
 }
